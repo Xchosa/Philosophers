@@ -1,0 +1,7 @@
+**/*.o
+**/*.out
+*.txt
+*.vscode
+*.DS_Store
+.obj
+.pdf

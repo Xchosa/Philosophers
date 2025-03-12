@@ -1,0 +1,7 @@
+**/*.o
+**/*.out
+**/*main
+*.txt
+*.vscode
+*.DS.STORE
+*libft.a
