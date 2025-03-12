@@ -1,30 +1,38 @@
 
 
 
-NAME 	= philo
-CC		= cc
-
+NAME 		= philo
+MAX_THRDS	= 200
+CC			= cc
 CFLAGS	= -Wall -Wextra -Werror -g -I inc/
-LIBFT	= ./mylibft/libft.a
+LDFLAGS = -lpthread
 
 
 OBJ_DIR = obj/
-BIN_DIR = bin/
-SOURCE_DIR = src/
+SOURCE_DIR = ./src
+INC_DIR = inc
+
+vpath %.c $(SOURCE_DIR)
+vpath %.h $(INC_DIR)
+
 
 
 # ---------- Subjects ---------- #
 MY_SOURCES = \ 
-		$(SOURCE_DIR)main.c \
+		main.c \
+		test.c 
 
+HEADERS = philo.h
 
 # ---------- Objects ---------- #
 
-MY_OBJECTS=$(MY_SOURCES:$(SOURCE_DIR)%.c=$(OBJ_DIR)%.o)
+OBJ 	= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+# MY_OBJECTS=$(MY_SOURCES:$(SOURCE_DIR)%.c=$(OBJ_DIR)%.o)
 
 
 # ---------- COLORS AND STUFF ---------- #
 Color_Off = \033[0m
+BLUE	=	\033[0;34m
 BIYellow = \033[1;93m
 Yellow = \033[0;33m
 BGreen = \033[1;32m 
@@ -33,29 +41,25 @@ On_Green = \033[42m
 Red = \033[0;31m
 
 
-all: $(OBJ_DIR) $(NAME)
+all: $(NAME)
 
-$(OBJ_DIR)%.o: $(SOURCE_DIR)%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+start_compile:
+	@printf "$(BLUE)Compiling Philosophers...$(Color_Off)\n"
+
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) -lpthread $(OBJ) -o $@ $(LIB)
+	@printf "$(BGreen)SUCCESS - $(NAME) has been successfully compiled$(NO_COLOR)\n"
+	@printf "$(BGreen)Compiling Files: Done$(Color_Off)\n"
+
+
+$(OBJ_DIR)/%.o: %.c $(HEADERS) | $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@printf "$(BGreen)Compiled $(notdir $<)$(Color_Off)\n"
+
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-
-$(NAME):  $(MY_OBJECTS) $(LIBFT)
-	@echo "$(BIYellow) Compiling $(NAME) $(Color_Off)"
-	@$(CC) $(CFLAGS) $(MY_OBJECTS) $(LIBFT) -o $(NAME) $(MLX)
-	@if [ -f $(NAME) ]; then \
-		echo "$(On_Yellow)------------------------------------------$(Color_Off)"; \
-		echo "$(BGreen)PROCESS COMPLETED SUCCESSFULLY!$(Color_Off)"; \
-		echo "$(On_Green)------------------------------------------$(Color_Off)"; \
-	else \
-		echo "$(Red)failed to compile $(NAME) $(Color_Off)"; \
-		exit 1; \
-	fi
-
-$(LIBFT):
-	make -C ./libft
 
 
 test: CFLAGS = -g
@@ -68,14 +72,15 @@ debug: -Wall -Wextra -Werror -g -I inc/ -fsanitize=address
 
 clean:
 	@echo "$(Yellow)-----Removing Object Files--------$(Color_Off)"
-	@rm -rf $(OBJ_DIR) $(BIN_DIR)
-	make -C libft fclean
+	@rm -rf $(OBJ_DIR) && printf "$(Yellow)Removing philosophers object files...$(Color_Off)\n"
+
 
 fclean: clean
 	@echo "$(On_Yellow)Removing Executables...$(Color_Off)"
-	@rm -f $(NAME)
-	@rm -rf $(OBJ_DIR) $(BIN_DIR)
-	make -C libft fclean
+	@rm -f $(NAME) && printf "$(Yellow)Removing philosophers binary$(Color_Off)\n"
+	@rm -rf $(OBJ_DIR) 
+	@printf "$(On_Green)Cleaned up $(NAME)$(Color_Off)\n"
+
 
 re: fclean all
 
@@ -88,4 +93,5 @@ re: fclean all
 f: fclean
 	$(CFLAGS) += -g -fsanitize=address
 	make all
+
 .PHONY: re clean fclean all
