@@ -18,9 +18,9 @@ vpath %.h $(INC_DIR)
 
 
 # ---------- Subjects ---------- #
-MY_SOURCES = \ 
+MY_SOURCES = \
 		main.c \
-		test.c 
+		test.c
 
 HEADERS = philo.h
 
@@ -65,7 +65,7 @@ $(OBJ_DIR):
 test: CFLAGS = -g
 test: $(NAME)
 
- ------------Debug for leaks---------------
+#------------Debug for leaks---------------
 # CFLAGS	= -Wall -Wextra -Werror -g -I inc/ -fsanitize=address
 debug: -Wall -Wextra -Werror -g -I inc/ -fsanitize=address
 
