@@ -4,8 +4,8 @@
 NAME 		= philo
 MAX_THRDS	= 200
 CC			= cc
-CFLAGS	= -Wall -Wextra -Werror -g -I inc/
-LDFLAGS = -lpthread
+CFLAGS		= -Wall -Wextra -Werror -g -I inc/
+# LDFLAGS = -lpthread
 
 
 OBJ_DIR = obj/
@@ -47,7 +47,7 @@ start_compile:
 	@printf "$(BLUE)Compiling Philosophers...$(Color_Off)\n"
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -lpthread $(OBJ) -o $@ $(LIB)
+	@$(CC) $(CFLAGS) $(OBJ) -o $@ $(LIB)
 	@printf "$(BGreen)SUCCESS - $(NAME) has been successfully compiled$(NO_COLOR)\n"
 	@printf "$(BGreen)Compiling Files: Done$(Color_Off)\n"
 

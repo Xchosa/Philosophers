@@ -5,21 +5,21 @@
 #include "../inc/philo.h"
 
 
-int main()
+int main(int argc, char **argv)
 {
-    t_progam   prog;
-    t_semaphore  chopstick[5]
+    t_program   progam;
 
-    while(true)
-    {
-        wait(chopstick[i]);
-        wait(chopstick[i+1] % 5); // 5th philo chob grabs nr 1 again
-        // eat
-        signal(chopstick[i]);
-        signal(chopstick[i +1] % 5)
+    if (check_arg(argc, argv) != 0)
+        return ;
+    init_programm(&progam, argv);
+    // pthread_mutex_init(&mutex, Null)
+    p_thread_create();
+        //pthread_mutex_lock();
+        // operation
+        // pthread_mutex_unlock()
 
-        // think (while this is true)
-    }
+    // pthread_join(&mutex)
+   // pthread_mutex_destroy(&mutex);
 }
 
 
@@ -30,14 +30,15 @@ int main()
 // eat think slepp 
 
 
-// 
+// Initialization: The program starts by checking the input arguments and initializing the data structures.
+// Philosopher Creation: It creates philosopher threads and starts their routines.
+// Monitoring: A monitor thread checks the status of philosophers to detect if any philosopher has died or if all philosophers are full.
+// Joining Threads: The main thread waits for all philosopher threads to finish.
+// Cleanup: Finally, it cleans up resources like mutexes.
 
-// // intialize mutex
-// phtread_mutex_intit();
-// // destroy
-// pthread_mutex_destroy();
 
-// //lock the mutex before accessing the shared resource
-// pthread_mutex_lock();
+void init_programm(t_program *program, char **argv)
+{
+    program->
 
-// pthread_mutex_unlock()
+}

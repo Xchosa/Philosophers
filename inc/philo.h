@@ -4,11 +4,6 @@
 #ifndef PHILO_H
 # define PHILO_H
 
-# ifndef MAX_THREADS
-#  define MAX_THREADS 200
-# endif
-
-
 
 
 # include <inttypes.h>
@@ -26,31 +21,48 @@
 # include <stdarg.h>
 # include <fcntl.h>
 
+# ifndef MAX_THREADS
+#  define MAX_THREADS 200
+# endif
+
 
 typedef struct s_philo
 {
-    uint_fast64_t		time_to_die;
-	uint_fast64_t		time_to_eat;
-	uint_fast64_t		time_to_sleep;
-    uint_fast64_t       nbr_of_times_philo_must_eat;
+    int             philo_id;
+    uint_fast64_t   time_last_meal;
+    pthread_t		thread;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	*right_fork;
+	int				meals_eaten;
+	bool			philo_is_full;
+	struct s_data	*data;
 
 }   t_philo;
 
 
 typedef struct s_program
 {
-    bool    start;
-    bool    stop;
-    bool    nbr; 1 free 0 occupied
+    int_fast32_t    philos_and_forks;
+    uint_fast64_t	time_to_die;
+	uint_fast64_t	time_to_eat;
+	uint_fast64_t	time_to_sleep;
+    uint_fast64_t   start_time;
+    int_fast32_t    nbr_of_times_philo_must_eat;
+    bool            philo_died;
+    bool            philo_satisfied;
+    bool            start_routine;
+    pthread_mutex_t	meal_mutex;
+	pthread_mutex_t	sleep_mutex;
+	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	death_mutex;
+	pthread_mutex_t	start_mutex;
+	pthread_mutex_t	must_eat_mutex;
+	pthread_mutex_t	forks[MAX_THREADS];
+	t_philo			philos[MAX_THREADS];
 
 }   t_program;
 
 
-
-typdef struct s_semaphore
-{
-    char   chopstick[nbr]    
-}
-
+void init_programm(t_program *program, char **argv);
 
 #endif
