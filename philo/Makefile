@@ -1,4 +1,14 @@
-
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/03/17 13:32:16 by poverbec          #+#    #+#              #
+#    Updated: 2025/03/17 13:39:45 by poverbec         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 
 NAME 		= philo
@@ -8,19 +18,18 @@ CFLAGS		= -Wall -Wextra -Werror -g -I inc/
 # LDFLAGS = -lpthread
 
 
-OBJ_DIR = obj/
 SOURCE_DIR = ./src
 INC_DIR = inc
 
-vpath %.c $(SOURCE_DIR)
-vpath %.h $(INC_DIR)
+VPATH %.c $(SOURCE_DIR)
+VPATH %.h $(INC_DIR)
 
 
 
 # ---------- Subjects ---------- #
 MY_SOURCES = \
 		main.c \
-		test.c
+		check_arg.c
 
 HEADERS = philo.h
 
@@ -54,7 +63,6 @@ $(NAME): $(OBJ)
 
 $(OBJ_DIR)/%.o: %.c $(HEADERS) | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "$(BGreen)Compiled $(notdir $<)$(Color_Off)\n"
 
 
 $(OBJ_DIR):
@@ -82,7 +90,8 @@ fclean: clean
 	@printf "$(On_Green)Cleaned up $(NAME)$(Color_Off)\n"
 
 
-re: fclean all
+re: $(MAKE)fclean
+	$(MAKE) all
 
 #norm:
 #	@cd src && norminette | grep "Error:" | wc -l
