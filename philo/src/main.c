@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:25:13 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/17 16:25:17 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:36:11 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
     check_arg(argc, argv);
     init_programm(&program, argv, argc); // pthread_mutex_init(&mutex, Null)
 
-    p_thread_create();
+    // pthread_create();
         //pthread_mutex_lock();
         // operation
         // pthread_mutex_unlock()

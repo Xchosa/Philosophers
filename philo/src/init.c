@@ -6,13 +6,11 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:25:07 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/17 16:25:09 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:30:54 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-
-
 
 
 void init_programm(t_program *program, char **argv, int argc)

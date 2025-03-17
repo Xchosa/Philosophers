@@ -6,10 +6,9 @@
 #    By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 13:32:16 by poverbec          #+#    #+#              #
-#    Updated: 2025/03/17 13:39:45 by poverbec         ###   ########.fr        #
+#    Updated: 2025/03/17 16:35:50 by poverbec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME 		= philo
 MAX_THRDS	= 200
@@ -20,22 +19,23 @@ CFLAGS		= -Wall -Wextra -Werror -g -I inc/
 
 SOURCE_DIR = ./src
 INC_DIR = inc
+OBJ_DIR = obj
 
-VPATH %.c $(SOURCE_DIR)
-VPATH %.h $(INC_DIR)
-
+VPATH = $(SOURCE_DIR):$(INC_DIR)
 
 
 # ---------- Subjects ---------- #
 MY_SOURCES = \
 		main.c \
-		check_arg.c
+		check_arg.c \
+		init.c \
+		destroy_mutex.c
 
 HEADERS = philo.h
 
 # ---------- Objects ---------- #
 
-OBJ 	= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
+OBJ 	= $(addprefix $(OBJ_DIR)/, $(MY_SOURCES:.c=.o))
 # MY_OBJECTS=$(MY_SOURCES:$(SOURCE_DIR)%.c=$(OBJ_DIR)%.o)
 
 

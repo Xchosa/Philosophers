@@ -6,14 +6,13 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/17 16:24:39 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:30:02 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #ifndef PHILO_H
 # define PHILO_H
-
 
 
 # include <inttypes.h>
