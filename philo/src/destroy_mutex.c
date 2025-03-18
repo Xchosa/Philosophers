@@ -12,8 +12,16 @@
 
 #include "../inc/philo.h"
 
-void destro_mutex(t_program *program)
+void    dextroy_threat_mutex(t_program *program)
 {
-	
-
+    int i;
+    i = 0;
+    while(i < program->philos_and_forks)
+    {
+        pthread_mutex_destroy(&program->forks[i]);
+        i++;
+    }
+	// slepp function
+	pthread_mutex_destroy(&program->print_mutex);
 }
+

@@ -22,8 +22,8 @@ void init_programm(t_program *program, char **argv, int argc)
 	if (argc == 5)
 		program->nbr_of_times_philo_must_eat = ft_atoi(argv[5]);
 	program->philo_died = false;
-	pthread_mutex_init(&program->meal_mutex, NULL);
-	pthread_mutex_intit(&program->sleep_mutex, NULL);
+	// pthread_mutex_init(&program->meal_mutex, NULL);
+	// pthread_mutex_intit(&program->sleep_mutex, NULL);
 	pthread_mutex_init(&program->print_mutex, NULL);
 	pthread_mutex_init(&program->death_mutex, NULL);
 	init_fork(program);

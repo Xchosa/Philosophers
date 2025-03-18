@@ -35,6 +35,16 @@
 # endif
 
 
+typedef enum s_actions
+{
+    FORK,    // 0
+    EATING,  // 1
+    SLEEPING, // 2
+    THINKING, // 3
+    DIED     // 4
+} t_actions;
+
+
 typedef struct s_philo
 {
     int             philo_id;
@@ -80,5 +90,11 @@ int		ft_atoi(const char *str);
 
 
 void init_programm(t_program *program, char **argv, int argc);
+
+
+
+// clean_up
+void    join_threats(t_program *program);
+void    dextroy_threat_mutex(t_program *program);
 
 #endif

@@ -24,10 +24,15 @@ int main(int argc, char **argv)
         //pthread_mutex_lock();
         // operation
         // pthread_mutex_unlock()
-	dextroy_mutex(&program);
-    // pthread_join(&mutex)
+    join_threats(&program);
+	dextroy_threat_mutex(&program);
    // pthread_mutex_destroy(&mutex);
 }
+
+/*workflow
+implemt threats
+print times for ech thread/philo id 
+use enom "philo 2 has taken a fork" */ 
 
 
 // can not pick up fork at the same time

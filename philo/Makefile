@@ -13,7 +13,10 @@
 NAME 		= philo
 MAX_THRDS	= 200
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g -I inc/
+#---------linux---------
+CFLAGS	= -Wall -Wextra -Werror -g -I inc/ -ldl -lglfw -pthread -lm
+
+#CFLAGS		= -Wall -Wextra -Werror -g -I inc/
 # LDFLAGS = -lpthread
 
 
