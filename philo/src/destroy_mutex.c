@@ -25,3 +25,14 @@ void    dextroy_threat_mutex(t_program *program)
 	pthread_mutex_destroy(&program->print_mutex);
 }
 
+void	free_everything(t_program *program)
+{
+	int i;
+
+	i = 0;
+	while(i < program->philos_and_forks)
+	{
+		// free(&program->philo[i]);
+		i++;
+	}
+}
