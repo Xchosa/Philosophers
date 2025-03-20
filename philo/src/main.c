@@ -21,7 +21,10 @@ int main(int argc, char **argv)
     init_programm(&program, argv, argc); // pthread_mutex_init(&mutex, Null)
     init_philos(&program);
 
-    // process(&program) // create threats 
+    // if (process(&program)!= 0)
+    //     printf("smth went wrong");
+    
+    // create threats 
     // pthread_create();
         //pthread_mutex_lock();
         // operation

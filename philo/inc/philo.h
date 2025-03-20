@@ -52,12 +52,12 @@ typedef struct s_philo
     pthread_t			philo_thread;
 	pthread_mutex_t		*left_fork;
 	pthread_mutex_t		*right_fork;
-	int					meals_eaten;
-	bool				philo_is_full;
 	struct s_program	*program;
 
 }	t_philo;
 
+
+// bool fork = free not free
 
 typedef struct s_program
 {
@@ -99,6 +99,7 @@ uint_fast64_t 	ft_get_time(void);
 uint_fast64_t	get_current_time(t_program *program);
 
 void	routine();
+int     process(t_program *program);
 
 // clean_up
 void    join_threats(t_program *program);

@@ -54,6 +54,8 @@ void	init_philos(t_program *program)
 		program->philo[i].philo_id = i;
 		program->philo[i].time_last_eaten = get_current_time(program);
 		program->philo[i].program = program;
+		program->philo[i].right_fork = &program->forks[i];
+		program->philo[i].left_fork = &program->forks[i % program->philos_and_forks]; // Philo 0 needs last fork 
 		i++;
 		printf("philo has eaten last time %ld \n", program->philo[i].time_last_eaten);
 	}
