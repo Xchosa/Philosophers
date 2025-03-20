@@ -1,35 +1,53 @@
-
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   routine.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/20 11:23:57 by poverbec          #+#    #+#             */
+/*   Updated: 2025/03/20 16:11:22 by poverbec         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 
 
 #include "../inc/philo.h"
 
-// void	routine(void *arg)
-// {
-// 	t_philo *philo;
-// 	t_program *program;
+void	*routine(void *philo_thread)
+{
+	t_philo *philo;
+	t_program *program;
 
-// 	program = philo->program;
-// 	philo = (t_philo *)arg;
+	philo = (t_philo *)philo_thread;
+	program = philo->program;
 
-// 	philo->philo_id = 
-
-// 	printf(" Philo %d thread has started", program->philo->philo_id);
-// 	printf(" %d has taken a fork \n", philo->philo_id);
+	if (philo->philo_id % 2 == 0)
+		usleep((program->time_to_eat / 2) *1000);// von micro auf mill onw func
 	
-// 	return ;
-// }
+	printf(" Philo %d thread has started \n", philo->philo_id);
+	simulation(&program, philo);
+	return (NULL);
+}
 
-// int    process(t_program *program)
-// {
-//     int i;
+int    process(t_program *program)
+{
+    int i;
     
-//     i = 0;
-//     while(i < program->philos_and_forks)
-//     {
-//         if(pthread_create(&program->philo[i].philo_thread, NULL, &routine, (void*)&program->philo[i]) != 0)
-// 			perror("Failed to create thread");
-// 		i++;
-//     }
-// }
+    i = 0;
+    while(i < program->philos_and_forks)
+    {
+		// last par = start with the falue 
+        if(pthread_create(&program->philo[i].philo_thread, NULL, routine, (void*)&program->philo[i]) != 0)
+			perror("Failed to create thread");
+		i++;
+    }
+	return 0;
+}
+
+// 
+
+// s
+// mirco 1/ mil	
+// milli 1 k 
+// macro 

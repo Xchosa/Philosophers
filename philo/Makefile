@@ -6,7 +6,7 @@
 #    By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 13:32:16 by poverbec          #+#    #+#              #
-#    Updated: 2025/03/17 16:35:50 by poverbec         ###   ########.fr        #
+#    Updated: 2025/03/20 12:43:28 by poverbec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ MAX_THRDS	= 200
 CC			= cc
 #---------linux---------
 CFLAGS	= -Wall -Wextra -Werror -g -I inc/ -ldl -lglfw -pthread -lm
-
-#CFLAGS		= -Wall -Wextra -Werror -g -I inc/
+#----------mac ---------
+CFLAGS		= -Wall -Wextra -Werror -g -I inc/
 # LDFLAGS = -lpthread
 
 
@@ -35,6 +35,8 @@ MY_SOURCES = \
 		destroy_mutex.c \
 		join_threads.c \
 		routine.c \
+		simulation.c \
+		get_times.c \
 		testing.c
 
 HEADERS = philo.h
@@ -96,7 +98,7 @@ fclean: clean
 	@printf "$(On_Green)Cleaned up $(NAME)$(Color_Off)\n"
 
 
-re: $(MAKE)fclean
+re: $(MAKE) fclean
 	$(MAKE) all
 
 #norm:

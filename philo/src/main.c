@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:25:13 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/20 09:44:38 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/20 12:35:10 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,22 @@ int main(int argc, char **argv)
 
     init_philos(&program);
 
-    // if (process(&program)!= 0)
-    //     printf("smth went wrong");
-    
+    if (process(&program)!= 0)
+        printf("smth went wrong");
+	monitor(&program);// nur main thread checks if philo 1 , 2 noch lebt loop alle 2 millesekunden, 
     // create threats 
     // pthread_create();
         //pthread_mutex_lock();
         // operation
         // pthread_mutex_unlock()
 
-init_philo
     print_program_struct(&program);
-    //join_threats(&program); need for threats
+    join_threats(&program); //need for threats
 	dextroy_threat_mutex(&program);
     free_everything(&program);
    // pthread_mutex_destroy(&mutex);
 }
+// only use one mutex function for everythin. 
 
 /*workflow
 implemt threats

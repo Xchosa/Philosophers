@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/17 16:30:02 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:06:55 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ typedef struct s_philo
     pthread_t			philo_thread;
 	pthread_mutex_t		*left_fork;
 	pthread_mutex_t		*right_fork;
+	uint_fast64_t   	taken_meals;
 	struct s_program	*program;
+	
 
 }	t_philo;
 
@@ -68,13 +70,10 @@ typedef struct s_program
     uint_fast64_t	start_time;
     int_fast32_t    nbr_of_times_philo_must_eat;
     bool            philo_died;
-    bool            philo_satisfied;
-    bool            start_routine;
 	pthread_mutex_t	eats_mutex;
 	pthread_mutex_t	sleep_mutex;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	think_mutex;
-	pthread_mutex_t	must_eat_mutex;
 	pthread_mutex_t	forks[MAX_THREADS];
 	t_philo			philo[MAX_THREADS];
 
@@ -86,6 +85,7 @@ void	check_arg(int argc, char **argv);
 void	error_input(char *error_msg);
 void	ft_putendl_fd(char *s, int fd);
 int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 
 void    print_program_struct(t_program *program);
 
@@ -95,11 +95,16 @@ void	init_fork(t_program *program);
 // created threads for each philo 
 // no need to malloc
 void			init_philos(t_program *program);
-uint_fast64_t 	ft_get_time(void);
+uint_fast64_t 	ft_get_time_millis(void);
 uint_fast64_t	get_current_time(t_program *program);
 
-void	routine();
+void	*routine(void *philo_thread);
 int     process(t_program *program);
+
+void	monitor(t_program *program);
+void	simulation(t_program *program, t_philo *philo);
+void	philo_sleep(t_program *program);
+void	philo_eats(t_program *program);
 
 // clean_up
 void    join_threats(t_program *program);
