@@ -35,19 +35,29 @@
 # endif
 
 
+typedef enum s_actions
+{
+    FORK,    // 0
+    EATING,  // 1
+    SLEEPING, // 2
+    THINKING, // 3
+    DIED     // 4
+} t_actions;
+
+
 typedef struct s_philo
 {
-    int             philo_id;
-    uint_fast64_t   time_last_eaten;
-    pthread_t		thread;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	*right_fork;
-	int				meals_eaten;
-	bool			philo_is_full;
-	struct s_data	*data;
+    int             	philo_id;
+    uint_fast64_t   	time_last_eaten;
+    pthread_t			philo_thread;
+	pthread_mutex_t		*left_fork;
+	pthread_mutex_t		*right_fork;
+	struct s_program	*program;
 
 }	t_philo;
 
+
+// bool fork = free not free
 
 typedef struct s_program
 {
@@ -60,14 +70,13 @@ typedef struct s_program
     bool            philo_died;
     bool            philo_satisfied;
     bool            start_routine;
-	pthread_mutex_t	meal_mutex;
+	pthread_mutex_t	eats_mutex;
 	pthread_mutex_t	sleep_mutex;
 	pthread_mutex_t	print_mutex;
-	pthread_mutex_t	death_mutex;
-	pthread_mutex_t	start_mutex;
+	pthread_mutex_t	think_mutex;
 	pthread_mutex_t	must_eat_mutex;
 	pthread_mutex_t	forks[MAX_THREADS];
-	t_philo			philos[MAX_THREADS];
+	t_philo			philo[MAX_THREADS];
 
 }	t_program;
 
@@ -78,7 +87,24 @@ void	error_input(char *error_msg);
 void	ft_putendl_fd(char *s, int fd);
 int		ft_atoi(const char *str);
 
+void    print_program_struct(t_program *program);
 
-void init_programm(t_program *program, char **argv, int argc);
+void	init_programm(t_program *program, char **argv, int argc);
+void	init_fork(t_program *program);
 
+// created threads for each philo 
+// no need to malloc
+void			init_philos(t_program *program);
+uint_fast64_t 	ft_get_time(void);
+uint_fast64_t	get_current_time(t_program *program);
+
+void	routine();
+int     process(t_program *program);
+
+// clean_up
+void    join_threats(t_program *program);
+void    dextroy_threat_mutex(t_program *program);
+
+// 
+void	free_everything(t_program *program);
 #endif

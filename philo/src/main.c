@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:25:13 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/17 16:49:16 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/20 09:44:08 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,32 @@ int main(int argc, char **argv)
 
     check_arg(argc, argv);
     init_programm(&program, argv, argc); // pthread_mutex_init(&mutex, Null)
-	init_philo(&program);
+
+    init_philos(&program);
+
+    // if (process(&program)!= 0)
+    //     printf("smth went wrong");
+    
+    // create threats 
     // pthread_create();
         //pthread_mutex_lock();
         // operation
         // pthread_mutex_unlock()
-	// pthread_join(&mutex)
-	dextroy_mutex(&program);
+
+init_philo
+    print_program_struct(&program);
+    //join_threats(&program); need for threats
+	dextroy_threat_mutex(&program);
+    free_everything(&program);
    // pthread_mutex_destroy(&mutex);
 }
 
-init_philo
+/*workflow
+implemt threats
+print times for ech thread/philo id 
+use enom "philo 2 has taken a fork" */ 
+
+
 // can not pick up fork at the same time
 //pick_up_fork
 // only available forks

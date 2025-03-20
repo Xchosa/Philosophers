@@ -13,7 +13,10 @@
 NAME 		= philo
 MAX_THRDS	= 200
 CC			= cc
-CFLAGS		= -Wall -Wextra -Werror -g -I inc/
+#---------linux---------
+CFLAGS	= -Wall -Wextra -Werror -g -I inc/ -ldl -lglfw -pthread -lm
+
+#CFLAGS		= -Wall -Wextra -Werror -g -I inc/
 # LDFLAGS = -lpthread
 
 
@@ -29,7 +32,10 @@ MY_SOURCES = \
 		main.c \
 		check_arg.c \
 		init.c \
-		destroy_mutex.c
+		destroy_mutex.c \
+		join_threads.c \
+		routine.c \
+		testing.c
 
 HEADERS = philo.h
 

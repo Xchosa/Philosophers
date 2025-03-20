@@ -61,7 +61,8 @@ void	error_input(char *error_msg)
 
 void	check_arg(int argc, char **argv)
 {
-	void(*argv);
-	if ((argc < 4 ) || (argc > 5))
-		error_input("Error\n wrong number of arguments");
+	if ((argc < 4 ) && (argc > 5))
+		error_input("Wrong number of arguments");
+	if (!argv[1])
+		error_input("Number of philos not specified");
 }
