@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/20 16:06:55 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:39:08 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct s_program
 	uint_fast64_t	time_to_eat;
 	uint_fast64_t	time_to_sleep;
     uint_fast64_t	start_time;
-    int_fast32_t    nbr_of_times_philo_must_eat;
+    uint_fast64_t   nbr_of_times_philo_must_eat;
     bool            philo_died;
 	pthread_mutex_t	eats_mutex;
 	pthread_mutex_t	sleep_mutex;
@@ -103,8 +103,9 @@ int     process(t_program *program);
 
 void	monitor(t_program *program);
 void	simulation(t_program *program, t_philo *philo);
-void	philo_sleep(t_program *program);
-void	philo_eats(t_program *program);
+void	philo_sleeps(t_philo *philo, t_program *program);
+void	philo_eats(t_philo *philo, t_program *program);
+void	philo_thinks(t_philo *philo, t_program *program);
 
 // clean_up
 void    join_threats(t_program *program);

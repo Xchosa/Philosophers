@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:23:57 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/20 16:11:22 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:37:26 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*routine(void *philo_thread)
 		usleep((program->time_to_eat / 2) *1000);// von micro auf mill onw func
 	
 	printf(" Philo %d thread has started \n", philo->philo_id);
-	simulation(&program, philo);
+	simulation(program, philo);
 	return (NULL);
 }
 
