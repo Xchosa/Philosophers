@@ -23,7 +23,6 @@ int main(int argc, char **argv)
     init_forks(&program);
     init_philos(&program);
 
-    print_program_struct(&program);
     if (process(&program) == 1)
          printf("smth went wrong");
     monitor(&program);

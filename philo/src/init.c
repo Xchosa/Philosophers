@@ -52,7 +52,7 @@ void	init_philos(t_program *program)
 	int i;
 	
 	i = 0;
-	while(i < program->philos_and_forks +1 )
+	while(i < program->philos_and_forks)
 	{
 		program->philo[i].philo_id = i + 1;
 		program->philo[i].taken_meals = 0;

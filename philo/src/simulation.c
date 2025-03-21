@@ -105,10 +105,16 @@ void	monitor(t_program *program)
 		i = 0;
 		while(i < program->philos_and_forks)
 		{
-			// if (program->time_to_eat , &program->philo_died == true) // setzt philo auf dead // last_time_eaten vgl mit time_to_die 
+			//if (program->time_to_eat , &program->philo_died == true) // setzt philo auf dead // last_time_eaten vgl mit time_to_die 
 			// 	return;
-			printf("%ld taken meals \n", program->philo[i].taken_meals);
-			printf("%ld meals to be taken \n", program->nbr_of_times_philo_must_eat);
+			//if(program->philo_died == true)
+			if(program->philo[i].philo_alive == false)
+				{
+					printf("%d philo is dead ", program->philo[i].philo_alive);
+					return;
+				}
+			// printf("%ld taken meals \n", program->philo[i].taken_meals);
+			//printf("%ld meals to be taken \n", program->nbr_of_times_philo_must_eat);
 			if (program->nbr_of_times_philo_must_eat == program->philo->taken_meals)// data race? weil monitor lesen und schreiben muss 
 				return;
 			i++;
