@@ -27,14 +27,18 @@ void	simulation(t_program *program, t_philo *philo)
 			// functions for ever update
 			// implement enoms?
 			philo_eats(philo, program);
+			if(philo->philo_alive == false)
+			{
+				printf("philo %d died ", philo->philo_id);
+				return;
+			}
 			philo_sleeps(philo, program);
-			philo->taken_meals++;
 			philo_thinks(philo, program);
 			i++;
 			if(program->nbr_of_times_philo_must_eat == philo->taken_meals)	
 				return;
 			tester++;
-			if (tester == 40)
+			if (tester == 10)
 				return;
 		}
 		
@@ -44,10 +48,37 @@ void	simulation(t_program *program, t_philo *philo)
 
 void	philo_eats(t_philo *philo, t_program *program)
 {
-	printf(" %ld , %d has taken a Fork \n", get_current_time(program), philo->philo_id);
-	
-	printf(" %ld , %d is eating \n", get_current_time(program),   philo->philo_id);
-	usleep(program->time_to_eat * 1000);
+	while(1)
+	{
+		if(philo->right_fork->used_by == 0 )	
+		{
+			philo->right_fork->used_by = philo->philo_id;
+			printf(" %ld , %d has taken a Fork \n", get_current_time(program), philo->philo_id);
+			printf("right fork used_by %d \n",philo->right_fork->used_by);
+		}
+		if(philo->right_fork->used_by == 0 )
+		{
+			printf(" %ld , %d has taken a Fork \n", get_current_time(program), philo->philo_id);
+			philo->left_fork->used_by = philo->philo_id;
+			printf("left fork used_by %d ",philo->left_fork->used_by);
+		}
+		// 
+		if(lifespan(program, philo) != 0)
+			program->philo_died = true;
+		// 
+		if(philo->right_fork->used_by == philo->philo_id && philo->left_fork->used_by == philo->philo_id )
+		{
+			printf(" %ld , %d is eating \n", get_current_time(program), philo->philo_id);
+			usleep(program->time_to_eat * 1000);
+			philo->left_fork->used_by = 0;
+			philo->right_fork->used_by = 0;
+			philo->time_last_eaten = get_current_time(program);
+			philo->taken_meals++;
+			break;
+		}
+
+		usleep(1 *1000);// no need to sleep thread can try to get the fork
+	}
 }
 void	philo_sleeps(t_philo *philo, t_program *program)
 {
@@ -59,7 +90,6 @@ void	philo_sleeps(t_philo *philo, t_program *program)
 void	philo_thinks(t_philo *philo, t_program *program)
 {
 	printf(" %ld , %d is thinking \n", get_current_time(program) , philo->philo_id);
-	usleep(program->time_to_eat * 1000);
 }
 
 

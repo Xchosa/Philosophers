@@ -20,7 +20,7 @@ void    dextroy_threat_mutex(t_program *program)
     i = 0;
     while(i < program->philos_and_forks)
     {
-        pthread_mutex_destroy(&program->forks[i]);
+        pthread_mutex_destroy(&program->forks[i].fork_mutex);
         i++;
     }
 	// slepp function

@@ -16,15 +16,20 @@
 int main(int argc, char **argv)
 {
 	t_program   program;
+    
 
     check_arg(argc, argv);
     init_programm(&program, argv, argc); // pthread_mutex_init(&mutex, Null)
-
+    init_forks(&program);
     init_philos(&program);
 
+    print_program_struct(&program);
     if (process(&program) == 1)
-        printf("smth went wrong");
+         printf("smth went wrong");
     monitor(&program);
+
+
+
     // nur main thread checks if philo 1 , 2 noch lebt loop alle 2 millesekunden, 
     // create threats 
     // pthread_create();
@@ -32,12 +37,17 @@ int main(int argc, char **argv)
         // operation
         // pthread_mutex_unlock()
 
+
+
     print_program_struct(&program);
     join_threats(&program); //need for threats
 	dextroy_threat_mutex(&program);
-    free_everything(&program);
-   // pthread_mutex_destroy(&mutex);
+    // free_everything(&program);
+
 }
+
+
+
 // only use one mutex function for everythin. 
 
 /*workflow

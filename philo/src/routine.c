@@ -23,7 +23,8 @@ void	*routine(void *philo_thread)
 	program = philo->program;
 
 	if (philo->philo_id % 2 == 0)
-		usleep((program->time_to_eat / 2) *1000);// von micro auf mill onw func
+		usleep(4 * 1000);
+		// usleep((program->time_to_eat / 2) *1000);// von micro auf mill onw func
 	
 	printf(" Philo %d thread has started \n", philo->philo_id);
 	simulation(program, philo);

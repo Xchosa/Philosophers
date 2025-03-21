@@ -45,13 +45,26 @@ typedef enum s_actions
 } t_actions;
 
 
+// every fork is a thread
+// every fork can be used // needs to be the same philo
+typedef struct s_forks
+{
+	pthread_mutex_t		fork_mutex;
+	int					fork_id; // philo 1 has fork 1 
+	int					used_by; // philo id or 0 if free;
+}	t_forks;
+
+
 typedef struct s_philo
 {
-    int             	philo_id;
-    uint_fast64_t   	time_last_eaten;
     pthread_t			philo_thread;
-	pthread_mutex_t		*left_fork;
-	pthread_mutex_t		*right_fork;
+    int             	philo_id;
+	bool				philo_alive;
+    uint_fast64_t   	time_last_eaten;
+	t_forks				*left_fork;
+	t_forks				*right_fork;
+	// pthread_mutex_t		*left_fork;
+	// pthread_mutex_t		*right_fork;
 	uint_fast64_t   	taken_meals;
 	struct s_program	*program;
 	
@@ -74,7 +87,8 @@ typedef struct s_program
 	pthread_mutex_t	sleep_mutex;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	think_mutex;
-	pthread_mutex_t	forks[MAX_THREADS];
+	// pthread_mutex_t	forks[MAX_THREADS];
+	t_forks			forks[MAX_THREADS];	
 	t_philo			philo[MAX_THREADS];
 
 }	t_program;
@@ -90,13 +104,14 @@ long	ft_atol(const char *str);
 void    print_program_struct(t_program *program);
 
 void	init_programm(t_program *program, char **argv, int argc);
-void	init_fork(t_program *program);
+void	init_forks(t_program *program);
 
 // created threads for each philo 
 // no need to malloc
 void			init_philos(t_program *program);
 uint_fast64_t 	ft_get_time_millis(void);
 uint_fast64_t	get_current_time(t_program *program);
+uint_fast64_t	lifespan(t_program *program, t_philo *philo);
 
 void	*routine(void *philo_thread);
 int     process(t_program *program);

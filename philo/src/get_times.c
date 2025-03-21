@@ -30,3 +30,14 @@ uint_fast64_t	get_current_time(t_program *program)
 {
 	return(ft_get_time_millis() - program->start_time);
 }
+
+uint_fast64_t	lifespan(t_program *program, t_philo *philo)
+{
+	// printf("philo %d time last eaten %ld \n", philo->philo_id, philo->time_last_eaten);
+	if ((get_current_time(program) -philo->time_last_eaten) > program->time_to_die)
+	{
+		philo->philo_alive = false;
+		program->philo_died = true;
+	}
+	return(0);
+}

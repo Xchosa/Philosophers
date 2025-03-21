@@ -26,6 +26,7 @@ void    print_program_struct(t_program *program)
 	while (i < program->philos_and_forks)
 	{
 		printf("%d id philos are living\n", program->philo[i].philo_id );
+        
 		// printf("%d philo holts right fork Nr. %d", program->philo[i].philo_id, program->philo[i].right_fork);
         // printf("%d philo holts left fork Nr. %d", program->philo[i].philo_id, program->philo[i].left_fork);
         i++;
