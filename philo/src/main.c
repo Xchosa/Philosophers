@@ -22,9 +22,10 @@ int main(int argc, char **argv)
 
     init_philos(&program);
 
-    if (process(&program)!= 0)
+    if (process(&program) == 1)
         printf("smth went wrong");
-	monitor(&program);// nur main thread checks if philo 1 , 2 noch lebt loop alle 2 millesekunden, 
+    monitor(&program);
+    // nur main thread checks if philo 1 , 2 noch lebt loop alle 2 millesekunden, 
     // create threats 
     // pthread_create();
         //pthread_mutex_lock();

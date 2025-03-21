@@ -39,7 +39,7 @@ int    process(t_program *program)
     {
 		// last par = start with the falue 
         if(pthread_create(&program->philo[i].philo_thread, NULL, routine, (void*)&program->philo[i]) != 0)
-			perror("Failed to create thread");
+			return(perror("Failed to create thread"), 1);
 		i++;
     }
 	return 0;

@@ -28,5 +28,5 @@ uint_fast64_t 	ft_get_time_millis()
 
 uint_fast64_t	get_current_time(t_program *program)
 {
-	return(program->start_time - ft_get_time_millis());
+	return(ft_get_time_millis() - program->start_time);
 }
