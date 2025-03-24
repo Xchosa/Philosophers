@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:41:48 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/20 10:42:36 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/24 13:25:49 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,12 @@
 
 void    print_program_struct(t_program *program)
 {
-    printf("%lu start time \n", program->start_time);
-    printf("%ld philos_and forks \n", program->philos_and_forks);
-    printf("%lu time to die\n ",program->time_to_die);
-    printf("%lu time to eat\n ",program->time_to_eat);
-    printf("%lu time to sleep\n ",program->time_to_sleep);
+	printf(" philo id %d \n", program->philo->philo_id);
+    printf("%llu start time \n", program->start_time);
+    printf("%d philos_and forks \n", program->philos_and_forks);
+    printf("%llu time to die\n ",program->time_to_die);
+    printf("%llu time to eat\n ",program->time_to_eat);
+    printf("%llu time to sleep\n ",program->time_to_sleep);
     int i;
     i = 0;
 	while (i < program->philos_and_forks)

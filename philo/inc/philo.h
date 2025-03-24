@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/20 16:39:08 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:59:15 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ typedef enum s_actions
 typedef struct s_forks
 {
 	pthread_mutex_t		fork_mutex;
-	int					fork_id; // philo 1 has fork 1 
+	int					fork_id; // to much information- asign a fork to a philo if he picks up a fork
+	bool				fork_bool; // false free // true taken 
 	int					used_by; // philo id or 0 if free;
 }	t_forks;
 
@@ -63,8 +64,6 @@ typedef struct s_philo
     uint_fast64_t   	time_last_eaten;
 	t_forks				*left_fork;
 	t_forks				*right_fork;
-	// pthread_mutex_t		*left_fork;
-	// pthread_mutex_t		*right_fork;
 	uint_fast64_t   	taken_meals;
 	struct s_program	*program;
 	
@@ -83,11 +82,12 @@ typedef struct s_program
     uint_fast64_t	start_time;
     uint_fast64_t   nbr_of_times_philo_must_eat;
     bool            philo_died;
-	pthread_mutex_t	eats_mutex;
+	pthread_mutex_t	eats_mutex; // no need
 	pthread_mutex_t	sleep_mutex;
 	pthread_mutex_t	print_mutex;
 	pthread_mutex_t	think_mutex;
-	// pthread_mutex_t	forks[MAX_THREADS];
+	pthread_mutex_t	time_mutex;
+	pthread_t		monitor_thread;
 	t_forks			forks[MAX_THREADS];	
 	t_philo			philo[MAX_THREADS];
 
@@ -112,9 +112,12 @@ void			init_philos(t_program *program);
 uint_fast64_t 	ft_get_time_millis(void);
 uint_fast64_t	get_current_time(t_program *program);
 uint_fast64_t	lifespan(t_program *program, t_philo *philo);
+void 			deathcheck(t_philo *philo, t_program *program);
 
 void	*routine(void *philo_thread);
 int     process(t_program *program);
+void	philo_eats_right_first(t_philo *philo, t_program *program);
+void 	philo_eats_left_first(t_philo *philo, t_program *program);
 
 void	monitor(t_program *program);
 void	simulation(t_program *program, t_philo *philo);

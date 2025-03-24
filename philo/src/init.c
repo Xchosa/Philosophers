@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:25:07 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/20 16:39:25 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:50:44 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void init_programm(t_program *program, char **argv, int argc)
 	pthread_mutex_init(&program->print_mutex, NULL);
 	pthread_mutex_init(&program->eats_mutex, NULL);
 	pthread_mutex_init(&program->think_mutex, NULL);
+	pthread_mutex_init(&program->time_mutex, NULL);
 }
 
 // each fork gets a mutex 
@@ -42,6 +43,7 @@ void	init_forks(t_program *program)
 	{
 		program->forks[i].fork_id = i + 1;
 		program->forks[i].used_by = 0;
+		program->forks[i].fork_bool = false;
 		pthread_mutex_init(&program->forks[i].fork_mutex, NULL);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:25:13 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/20 12:35:10 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:18:20 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,23 +22,13 @@ int main(int argc, char **argv)
     init_programm(&program, argv, argc); // pthread_mutex_init(&mutex, Null)
     init_forks(&program);
     init_philos(&program);
-
+	// print_program_struct(&program);
+	
     if (process(&program) == 1)
          printf("smth went wrong");
-    monitor(&program);
+    monitor(&program); //jetzt seperate einen mointor thread erstellt der monitor aufruft
 
-
-
-    // nur main thread checks if philo 1 , 2 noch lebt loop alle 2 millesekunden, 
-    // create threats 
-    // pthread_create();
-        //pthread_mutex_lock();
-        // operation
-        // pthread_mutex_unlock()
-
-
-
-    print_program_struct(&program);
+    // print_program_struct(&program);
     join_threats(&program); //need for threats
 	dextroy_threat_mutex(&program);
     // free_everything(&program);
