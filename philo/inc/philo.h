@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/24 14:59:15 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:27:02 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef enum s_actions
 typedef struct s_forks
 {
 	pthread_mutex_t		fork_mutex;
-	int					fork_id; // to much information- asign a fork to a philo if he picks up a fork
 	bool				fork_bool; // false free // true taken 
 	int					used_by; // philo id or 0 if free;
 }	t_forks;
@@ -82,12 +81,12 @@ typedef struct s_program
     uint_fast64_t	start_time;
     uint_fast64_t   nbr_of_times_philo_must_eat;
     bool            philo_died;
-	pthread_mutex_t	eats_mutex; // no need
-	pthread_mutex_t	sleep_mutex;
+	
+	
 	pthread_mutex_t	print_mutex;
-	pthread_mutex_t	think_mutex;
+	
 	pthread_mutex_t	time_mutex;
-	pthread_t		monitor_thread;
+	
 	t_forks			forks[MAX_THREADS];	
 	t_philo			philo[MAX_THREADS];
 

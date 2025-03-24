@@ -6,7 +6,7 @@
 #    By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 13:32:16 by poverbec          #+#    #+#              #
-#    Updated: 2025/03/20 12:43:28 by poverbec         ###   ########.fr        #
+#    Updated: 2025/03/24 16:42:14 by poverbec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ MY_SOURCES = \
 		routine.c \
 		simulation.c \
 		get_times.c \
+		print.c \
 		testing.c
 
 HEADERS = philo.h

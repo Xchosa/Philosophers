@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:36:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/24 15:05:22 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/24 16:44:09 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,29 @@ void	simulation(t_program *program, t_philo *philo)
 				printf("philo %d died ", philo->philo_id);
 				return;
 			}
+			if (program->nbr_of_times_philo_must_eat == program->philo->taken_meals)// data race? weil monitor lesen und schreiben muss 
+			{
+				// 
+				// own+print(program->philo
+
+				// print_mutex blocken 
+			}
 			philo_sleeps(philo, program);
 			philo_thinks(philo, program);
 			if(program->nbr_of_times_philo_must_eat > 0 && philo->taken_meals >= program->nbr_of_times_philo_must_eat)	
 				return ;
+			
 	}
 }
+// brauche keinen monitor - jeder philo soll selber checken ob er satt oder tod ist. dann print_mutex blocken, so das keiner danach mehr drucken kann
+// mutex
+// fork
+// zeit
+//printen 
+// seperate mutex 
+// print_mutex im program 
+
+
 
 void	philo_eats_right_first(t_philo *philo, t_program *program)
 {
