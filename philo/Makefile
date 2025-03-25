@@ -6,7 +6,7 @@
 #    By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 13:32:16 by poverbec          #+#    #+#              #
-#    Updated: 2025/03/24 16:42:14 by poverbec         ###   ########.fr        #
+#    Updated: 2025/03/25 15:59:54 by poverbec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,11 @@ CFLAGS		= -Wall -Wextra -Werror -g -I inc/
 
 
 SOURCE_DIR = ./src
+SIMULATION_DIR = ./src/simulation
 INC_DIR = inc
 OBJ_DIR = obj
 
-VPATH = $(SOURCE_DIR):$(INC_DIR)
+VPATH = $(SOURCE_DIR):$(SIMULATION_DIR):$(INC_DIR)
 
 
 # ---------- Subjects ---------- #
@@ -33,11 +34,12 @@ MY_SOURCES = \
 		check_arg.c \
 		init.c \
 		destroy_mutex.c \
-		join_threads.c \
 		routine.c \
 		simulation.c \
-		get_times.c \
+		philo_eats.c \
 		print.c \
+		get_times.c \
+		wait_for_threads.c \
 		testing.c
 
 HEADERS = philo.h
