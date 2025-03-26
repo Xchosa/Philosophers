@@ -15,25 +15,31 @@
 // simulations when a philo eats, thinks or sleeps updates last_time_eaten every time
 void	simulation(t_program *program, t_philo *philo)
 {
+	// forks are still blocked for 5 
+	// philo 5 jumps straight into sleeping - no fork free 
+	// if philo id is ungerade und philo id 1 extra check
+	// debug with c debugger vs
 	while(1)
 	{
-			if(check_philo_alive(philo, program) == false)
-				return;
-			if((philo->philo_id % 2 ) != 0)
-				philo_eats_right_first(philo, program);
-			else 
-				philo_eats_left_first(philo, program);
-			philo_sleeps(philo, program);
-			philo_thinks(philo, program);
-			if (check_is_philo_full(program, philo) == false)
-				return ;
+		if(check_philo_alive(philo,program )== false)
+			return;
+		printf(" philo %d in simulation part 1\n", philo->philo_id);
+		if((philo->philo_id % 2 ) != 0)
+			philo_eats_right_first(philo, program);
+		else 
+			philo_eats_left_first(philo, program);
+		philo_sleeps(philo, program);
+		philo_thinks(philo, program);
+		if (check_is_philo_full(program, philo) == false)
+			return ;
+		printf(" philo %d in simulation\n", philo->philo_id);
 	}
 }
 
 void	philo_sleeps(t_philo *philo, t_program *program)
 {
 	print_save(program, philo, SLEEP);
-	printf(" sleep time: %llu \n", program->time_to_sleep);
+	printf(" sleep time: %lu \n", program->time_to_sleep);
 	usleep(program->time_to_sleep * 1000);
 }
 // waits as long as it takes time to eat 
@@ -41,8 +47,8 @@ void	philo_sleeps(t_philo *philo, t_program *program)
 void	philo_thinks(t_philo *philo, t_program *program)
 {
 	print_save(program, philo, THINK);
-	printf(" think time: %llu \n", program->time_to_die - (get_current_time(program) - philo->time_last_eaten));
-	usleep(program->time_to_die /2 *1000 );
+	printf(" think time: %lu \n", program->time_to_die - (get_current_time(program) - philo->time_last_eaten));
+	usleep(program->time_to_die /4 *1000 );
 	// usleep(program->time_to_die - (get_current_time(program) - philo->time_last_eaten));
 }
 

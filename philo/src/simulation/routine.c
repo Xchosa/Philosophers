@@ -21,9 +21,9 @@ void	*routine(void *philo_thread)
 	philo = (t_philo *)philo_thread;
 	program = philo->program;
 
-	if (philo->philo_id % 2 == 0)
+	if ((philo->philo_id % 2 ) == 0)
 	{
-		printf(" philo %d waits %llu \n", philo->philo_id, ((program->time_to_eat / 2)));
+		printf(" philo %d waits %lu \n", philo->philo_id, ((program->time_to_eat / 2)));
 		usleep((program->time_to_eat / 2));
 	}
 	simulation(program, philo);

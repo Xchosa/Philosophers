@@ -41,5 +41,4 @@ void	free_everything(t_program *program)
 		free(&program->forks[i]);
 		i++;
 	}
-	free(&program);
 }

@@ -26,8 +26,10 @@ void	init_arguments_in_programm(t_program *program, char **argv, int argc)
 		program->bool_meal_limit = true;
 	}
 	else
-		program->nbr_of_times_philo_must_eat = INT_MAX;
+	{
+		program->nbr_of_times_philo_must_eat = 0;
 		program->bool_meal_limit = false;
+	}
 }
 void	initialise_mutex_in_program(t_program *program)
 {

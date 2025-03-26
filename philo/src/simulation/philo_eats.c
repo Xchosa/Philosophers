@@ -38,7 +38,7 @@ void	philo_eats_right_first(t_philo *philo, t_program *program)
 {
 	while(1)
 	{
-		// pthread_mutex_lock(&philo->right_fork->fork_mutex);
+		pthread_mutex_lock(&philo->right_fork->fork_mutex);
 		pthread_mutex_lock(&philo->left_fork->fork_mutex);
 		if(philo->right_fork->fork_bool == false && philo->left_fork->fork_bool == false)
 		{
@@ -53,12 +53,14 @@ void	philo_eats_right_first(t_philo *philo, t_program *program)
 		}
 		else
 		{
-			// pthread_mutex_unlock(&philo->right_fork->fork_mutex);
+			pthread_mutex_unlock(&philo->right_fork->fork_mutex);
 			pthread_mutex_unlock(&philo->left_fork->fork_mutex);
-			return ;
+			break ;
 		}
 		// pthread_mutex_unlock(&philo->right_fork->fork_mutex);
 		pthread_mutex_unlock(&philo->left_fork->fork_mutex);
+		printf(" philo %d waits %lu \n", philo->philo_id, ((program->time_to_eat / 2)));
+		usleep((program->time_to_eat / 2));
 	}
 }
 
@@ -96,6 +98,12 @@ void philo_eats_left_first(t_philo *philo, t_program *program)
 			usleep(program->time_to_eat * 1000);
 			fork_back_on_table(philo);
 			update_eaten_meals_Nbr_and_time(philo, program);
+		}
+		else
+		{
+			pthread_mutex_unlock(&philo->right_fork->fork_mutex);
+			pthread_mutex_unlock(&philo->left_fork->fork_mutex);
+			break
 		}
 		pthread_mutex_unlock(&philo->right_fork->fork_mutex);
 		pthread_mutex_unlock(&philo->left_fork->fork_mutex);
