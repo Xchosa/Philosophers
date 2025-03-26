@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:25:07 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/25 16:08:08 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/26 12:50:24 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_arguments_in_programm(t_program *program, char **argv, int argc)
 	program->time_to_die = ft_atol(argv[2]);
 	program->time_to_eat = ft_atol(argv[3]);
 	program->time_to_sleep = ft_atol(argv[4]);
-	if (argc == 5)
+	if (argc == 6)
 	{
 		program->nbr_of_times_philo_must_eat = ft_atol(argv[5]);
 		program->bool_meal_limit = true;
@@ -73,10 +73,12 @@ void	init_philos(t_program *program)
 			&program->forks[(i - 1 + program->philos_and_forks) % program->philos_and_forks]; 
 		
 		
-		printf("Philo_id %d: right fork %p | left fork %p \n ", 
+		printf("Philo_id %d: right fork %p | left fork %p  \n ", 
             program->philo[i].philo_id, 
             program->philo[i].right_fork,
-            program->philo[i].left_fork);
+			// program->philo[i].right_fork->philo_hand = program->philo[i].philo_id,
+            program->philo[i].left_fork),
+			// program->philo[i].left_fork->philo_hand = program->philo[(i - 1 + program->philos_and_forks) % program->philos_and_forks].philo_id,
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:41:48 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/24 13:25:49 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/26 12:35:53 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,91 +35,22 @@
 // }
 
 
-// how it should look
-/*
-0 2 has taken a fork
-0 2 has taken a fork
-0 2 is eating
-0 4 has taken a fork
-0 4 has taken a fork
-0 4 is eating
-1 1 has taken a fork
-2 2 is sleeping
-2 4 is sleeping
-2 3 has taken a fork
-2 3 has taken a fork
-2 3 is eating
-2 1 has taken a fork
-2 1 is eating
-2 5 has taken a fork
-4 4 is thinking
-4 2 is thinking
-4 1 is sleeping
-4 3 is sleeping
-4 2 has taken a fork
-4 5 has taken a fork
-4 5 is eating
-4 2 has taken a fork
-4 2 is eating
-6 5 is sleeping
-6 4 has taken a fork
-6 4 has taken a fork
-6 4 is eating
-6 3 is thinking
-6 1 is thinking
-6 1 has taken a fork
-6 1 has taken a fork
-6 1 is eating
-6 3 has taken a fork
-6 2 is sleeping
-8 2 is thinking
-8 4 is sleeping
-8 3 has taken a fork
-8 5 is thinking
-8 1 is sleeping
-8 3 is eating
-8 5 has taken a fork
-8 5 has taken a fork
-8 5 is eating
-10 4 is thinking
-10 3 is sleeping
-10 1 is thinking
-10 2 has taken a fork
-10 2 has taken a fork
-10 2 is eating
-10 5 is sleeping
-10 4 has taken a fork
-10 4 has taken a fork
-10 4 is eating
-10 1 has taken a fork
-12 4 is sleeping
-12 3 is thinking
-12 2 is sleeping
-12 5 is thinking
-12 5 has taken a fork
-12 1 has taken a fork
-12 1 is eating
-12 3 has taken a fork
-12 3 has taken a fork
-12 3 is eating
-14 3 is sleeping
-14 4 is thinking
-14 1 is sleeping
-14 5 has taken a fork
-14 5 is eating
-14 2 is thinking
-14 2 has taken a fork
-14 2 has taken a fork
-14 2 is eating
-16 3 is thinking
-16 1 is thinking
-16 2 is sleeping
-16 3 has taken a fork
-16 3 has taken a fork
-16 5 is sleeping
-16 4 has taken a fork
-16 3 is eating
-16 1 has taken a fork
-16 1 has taken a fork
-16 1 is eating
-17 4 died*/
+void debug_log(t_program *program, t_philo *philo, char *action)
+{
+    pthread_mutex_lock(&program->mutex_print);
+    printf("[DEBUG] %llu ms | Philo %d | %s | Eaten: %llu | Last eaten: %llu\n", 
+        get_current_time(program), philo->philo_id, action, 
+        philo->taken_meals, philo->time_last_eaten);
+    pthread_mutex_unlock(&program->mutex_print);
+}
+
+void print_fork_state(t_program *program, char *time)
+{
+    int i;
+    printf("\n--- FORK STATE ---\n");
+    for (i = 0; i < program->philos_and_forks; i++)
+    {
+        printf("Fork %d: %s %s \n", i+1, program->forks[i].fork_bool ? "TAKEN" : "FREE", time);
+    }
+    printf("-----------------\n");
+}

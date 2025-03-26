@@ -6,12 +6,14 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 10:25:14 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/25 15:50:50 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/26 16:43:08 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/philo.h"
 
+// watch https://www.youtube.com/watch?v=raLCgPK-Igc
+// reduce mutex
 
 bool	check_is_philo_full(t_program *program, t_philo *philo)
 {
@@ -28,6 +30,7 @@ bool	check_is_philo_full(t_program *program, t_philo *philo)
 	{
 		philo_is_not_full = false;
 	}
+	// printf("philo %d  is not full %llu \n", philo->philo_id, philo->taken_meals );
 	pthread_mutex_unlock(&program->mutex_meals_to_take);
 	pthread_mutex_unlock(&philo->mutex_taken_meals);
 	return (philo_is_not_full);
@@ -38,6 +41,8 @@ void	philo_eats_right_first(t_philo *philo, t_program *program)
 {
 	while(1)
 	{
+		if(check_philo_alive(philo,program )== false)
+			return;
 		pthread_mutex_lock(&philo->right_fork->fork_mutex);
 		pthread_mutex_lock(&philo->left_fork->fork_mutex);
 		if(philo->right_fork->fork_bool == false && philo->left_fork->fork_bool == false)
@@ -50,63 +55,59 @@ void	philo_eats_right_first(t_philo *philo, t_program *program)
 			usleep(program->time_to_eat * 1000);
 			fork_back_on_table(philo);
 			update_eaten_meals_Nbr_and_time(philo, program);
+			pthread_mutex_unlock(&philo->right_fork->fork_mutex);
+			pthread_mutex_unlock(&philo->left_fork->fork_mutex);
+			return ;
 		}
 		else
 		{
 			pthread_mutex_unlock(&philo->right_fork->fork_mutex);
 			pthread_mutex_unlock(&philo->left_fork->fork_mutex);
-			break ;
 		}
-		// pthread_mutex_unlock(&philo->right_fork->fork_mutex);
-		pthread_mutex_unlock(&philo->left_fork->fork_mutex);
-		printf(" philo %d waits %lu \n", philo->philo_id, ((program->time_to_eat / 2)));
-		usleep((program->time_to_eat / 2));
 	}
-}
-
-void	fork_back_on_table(t_philo *philo)
-{
-	pthread_mutex_lock(&philo->left_fork->fork_mutex);
-	pthread_mutex_lock(&philo->right_fork->fork_mutex);
-	philo->left_fork->fork_bool = false;
-	philo->right_fork->fork_bool = false;
-	pthread_mutex_unlock(&philo->right_fork->fork_mutex);
-}
-void	update_eaten_meals_Nbr_and_time(t_philo *philo, t_program *program)
-{
-	// pthread_mutex_lock(&program->mutex_meals_to_take);
-	pthread_mutex_lock(&philo->mutex_taken_meals);
-	philo->time_last_eaten = get_current_time(program);
-	philo->taken_meals++;
-	// pthread_mutex_unlock(&program->mutex_meals_to_take);
-	pthread_mutex_unlock(&philo->mutex_taken_meals);
 }
 
 void philo_eats_left_first(t_philo *philo, t_program *program)
 {
 	while(1)
 	{
-		pthread_mutex_lock(&philo->left_fork->fork_mutex);
+		if(check_philo_alive(philo,program )== false)
+			return;
 		pthread_mutex_lock(&philo->right_fork->fork_mutex);
-		if(philo->left_fork->fork_bool == false && philo->right_fork->fork_bool == false)
+		pthread_mutex_lock(&philo->left_fork->fork_mutex);
+		if(philo->right_fork->fork_bool == false && philo->left_fork->fork_bool == false)
 		{
-			philo->left_fork->fork_bool = true;
-			print_save(program, philo, FORK);
 			philo->right_fork->fork_bool = true;
+			print_save(program, philo, FORK);
+			philo->left_fork->fork_bool = true;
 			print_save(program, philo, FORK);
 			print_save(program, philo, EAT);
 			usleep(program->time_to_eat * 1000);
 			fork_back_on_table(philo);
 			update_eaten_meals_Nbr_and_time(philo, program);
+			pthread_mutex_unlock(&philo->right_fork->fork_mutex);
+			pthread_mutex_unlock(&philo->left_fork->fork_mutex);
+			return ;
 		}
 		else
 		{
 			pthread_mutex_unlock(&philo->right_fork->fork_mutex);
 			pthread_mutex_unlock(&philo->left_fork->fork_mutex);
-			break
 		}
-		pthread_mutex_unlock(&philo->right_fork->fork_mutex);
-		pthread_mutex_unlock(&philo->left_fork->fork_mutex);
-		return;
 	}
+}
+
+void	fork_back_on_table(t_philo *philo)
+{
+	philo->left_fork->fork_bool = false;
+	philo->right_fork->fork_bool = false;
+}
+void	update_eaten_meals_Nbr_and_time(t_philo *philo, t_program *program)
+{
+	pthread_mutex_lock(&program->mutex_meals_to_take);
+	pthread_mutex_lock(&philo->mutex_taken_meals);
+	philo->time_last_eaten = get_current_time(program);
+	philo->taken_meals++;
+	pthread_mutex_unlock(&program->mutex_meals_to_take);
+	pthread_mutex_unlock(&philo->mutex_taken_meals);
 }

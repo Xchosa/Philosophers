@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/25 15:56:03 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/26 12:50:29 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,4 +132,9 @@ void    dextroy_thread_mutex(t_program *program);
 
 // 
 void	free_everything(t_program *program);
+
+// debug
+void print_fork_state(t_program *program, char *time);
+void debug_log(t_program *program, t_philo *philo, char *action);
+
 #endif
