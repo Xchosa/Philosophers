@@ -31,30 +31,7 @@ int main(int argc, char **argv)
     // print_program_struct(&program);
     wait_for_all_threads(&program);
 	dextroy_thread_mutex(&program);
-    free_everything(&program);
-
 }
 
 
-
-// only use one mutex function for everythin. 
-
-/*workflow
-implemt threats
-print times for ech thread/philo id 
-use enom "philo 2 has taken a fork" */ 
-
-
-// can not pick up fork at the same time
-//pick_up_fork
-// only available forks
-// no philo should try eating 
-// eat think slepp 
-
-
-// Initialization: The program starts by checking the input arguments and initializing the data structures.
-// Philosopher Creation: It creates philosopher threads and starts their routines.
-// Monitoring: A monitor thread checks the status of philosophers to detect if any philosopher has died or if all philosophers are full.
-// Joining Threads: The main thread waits for all philosopher threads to finish.
-// Cleanup: Finally, it cleans up resources like mutexes.
 

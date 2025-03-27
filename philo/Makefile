@@ -89,6 +89,16 @@ test: $(NAME)
 debug: -Wall -Wextra -Werror -g -I inc/ -fsanitize=address
 
 
+valgrind:
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose ./philo
+
+
+helgrind:
+	valgrind --tool=helgrind ./philo 2 200 200 7 
+
+assembly:
+	$(CC) -S srcs/philosophers.c
+
 clean:
 	@echo "$(Yellow)-----Removing Object Files--------$(Color_Off)"
 	@rm -rf $(OBJ_DIR) && printf "$(Yellow)Removing philosophers object files...$(Color_Off)\n"

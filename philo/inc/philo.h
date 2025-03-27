@@ -115,8 +115,9 @@ uint_fast64_t	get_current_time(t_program *program);
 
 void	*routine(void *philo_thread);
 int     process(t_program *program);
-void	philo_eats_right_first(t_philo *philo, t_program *program);
-void 	philo_eats_left_first(t_philo *philo, t_program *program);
+void	philo_eats(t_philo *philo, t_program *program);
+void	choose_fork_to_unlock(t_philo *philo);
+void	choose_fork_to_lock(t_philo *philo);
 void	fork_back_on_table(t_philo *philo);
 void	update_eaten_meals_Nbr_and_time(t_philo *philo, t_program *program);
 

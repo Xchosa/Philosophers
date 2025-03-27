@@ -31,6 +31,7 @@ void	init_arguments_in_programm(t_program *program, char **argv, int argc)
 		program->bool_meal_limit = false;
 	}
 }
+
 void	initialise_mutex_in_program(t_program *program)
 {
 	program->all_philos_alive = true;
@@ -71,14 +72,13 @@ void	init_philos(t_program *program)
 		program->philo[i].right_fork = &program->forks[i];
 		program->philo[i].left_fork =
 			&program->forks[(i - 1 + program->philos_and_forks) % program->philos_and_forks]; 
-		
+		pthread_mutex_init(&program->philo[i].mutex_taken_meals, NULL);
+		pthread_mutex_init(&program->philo[i].mutex_time_last_eaten, NULL);
 		
 		printf("Philo_id %d: right fork %p | left fork %p  \n ", 
             program->philo[i].philo_id, 
             program->philo[i].right_fork,
-			// program->philo[i].right_fork->philo_hand = program->philo[i].philo_id,
             program->philo[i].left_fork),
-			// program->philo[i].left_fork->philo_hand = program->philo[(i - 1 + program->philos_and_forks) % program->philos_and_forks].philo_id,
 		i++;
 	}
 }

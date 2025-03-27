@@ -14,10 +14,10 @@
 
 void    dextroy_thread_mutex(t_program *program)
 {
-	pthread_mutex_destroy(&program->mutex_print);
 	pthread_mutex_destroy(&program->mutex_start_time);
-	pthread_mutex_destroy(&program->mutex_all_philos_alive);
 	pthread_mutex_destroy(&program->mutex_meals_to_take);
+	pthread_mutex_destroy(&program->mutex_all_philos_alive);
+	pthread_mutex_destroy(&program->mutex_print);
 
     int i;
     i = 0;
@@ -30,15 +30,15 @@ void    dextroy_thread_mutex(t_program *program)
     }
 }
 
-void	free_everything(t_program *program)
-{
-	int i;
+// void	free_everything(t_program *program)
+// {
+// 	int i;
 
-	i = 0;
-	while(i < program->philos_and_forks)
-	{
-		free(&program->philo[i]);
-		free(&program->forks[i]);
-		i++;
-	}
-}
+// 	i = 0;
+// 	while(i < program->philos_and_forks)
+// 	{
+// 		free(&program->philo[i]);
+// 		free(&program->forks[i]);
+// 		i++;
+// 	}
+// }

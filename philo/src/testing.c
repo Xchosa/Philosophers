@@ -38,7 +38,7 @@
 void debug_log(t_program *program, t_philo *philo, char *action)
 {
     pthread_mutex_lock(&program->mutex_print);
-    printf("[DEBUG] %llu ms | Philo %d | %s | Eaten: %llu | Last eaten: %llu\n", 
+    printf("[DEBUG] %lu ms | Philo %d | %s | Eaten: %lu | Last eaten: %lu\n", 
         get_current_time(program), philo->philo_id, action, 
         philo->taken_meals, philo->time_last_eaten);
     pthread_mutex_unlock(&program->mutex_print);
