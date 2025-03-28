@@ -12,19 +12,17 @@
 
 #include "../../inc/philo.h"
 
-
 void	simulation(t_program *program, t_philo *philo)
 {
 	while(1)
 	{
-		philo_eats(philo, program);
 		if(check_philo_alive(philo,program ) == false)
 			return ;
+		philo_eats(philo, program);
 		philo_sleeps(philo, program);
 		philo_thinks(philo, program);
 		if (check_is_philo_full(program, philo) == false)
 			return ;
-		// debug_log(program, philo, "one_round");
 	}
 }
 
@@ -36,10 +34,10 @@ void	*routine(void *philo_thread)
 	philo = (t_philo *)philo_thread;
 	program = philo->program;
 
+	initalize_philo_lifetime(philo, program);
 	if ((philo->philo_id % 2 ) == 0)
 	{
-		// printf(" philo %d waits %lu \n", philo->philo_id, ((program->time_to_eat / 2)));
-		usleep((program->time_to_eat / 2));
+		usleep((program->time_to_eat / 10));
 	}
 	simulation(program, philo);
 	return (NULL);

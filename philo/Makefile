@@ -32,10 +32,12 @@ VPATH = $(SOURCE_DIR):$(SIMULATION_DIR):$(INC_DIR)
 MY_SOURCES = \
 		main.c \
 		check_arg.c \
+		helper.c \
 		init.c \
 		destroy_mutex.c \
 		routine.c \
 		simulation.c \
+		check_philo_live.c \
 		philo_eats.c \
 		print.c \
 		get_times.c \

@@ -115,6 +115,7 @@ uint_fast64_t	get_current_time(t_program *program);
 
 void	*routine(void *philo_thread);
 int     create_threads(t_program *program);
+void    initalize_philo_lifetime(t_philo *philo, t_program *program);
 void	philo_eats(t_philo *philo, t_program *program);
 void	choose_fork_to_unlock(t_philo *philo);
 void	choose_fork_to_lock(t_philo *philo);

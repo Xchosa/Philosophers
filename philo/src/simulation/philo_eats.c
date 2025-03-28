@@ -22,10 +22,10 @@ void	fork_back_on_table(t_philo *philo)
 void	update_eaten_meals_Nbr_and_time(t_philo *philo, t_program *program)
 {
 	pthread_mutex_lock(&philo->mutex_taken_meals);
-	pthread_mutex_lock(&program->mutex_meals_to_take);
+	// pthread_mutex_lock(&program->time_mutex);
 	philo->time_last_eaten = get_current_time(program);
 	philo->taken_meals++;
-	pthread_mutex_unlock(&program->mutex_meals_to_take);
+	// pthread_mutex_unlock(&program->time_mutex);
 	pthread_mutex_unlock(&philo->mutex_taken_meals);
 }
 

@@ -12,7 +12,6 @@
 
 #include "../inc/philo.h"
 
-
 int main(int argc, char **argv)
 {
 	t_program   program;
@@ -27,6 +26,3 @@ int main(int argc, char **argv)
     wait_for_all_threads(&program);
 	dextroy_thread_mutex(&program);
 }
-
-
-

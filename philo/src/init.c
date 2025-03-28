@@ -12,7 +12,6 @@
 
 #include "../inc/philo.h"
 
-
 void	init_arguments_in_programm(t_program *program, char **argv, int argc)
 {
     program->start_time = ft_get_time_millis();
@@ -39,11 +38,9 @@ void	initialise_mutex_in_program(t_program *program)
 	pthread_mutex_init(&program->mutex_print, NULL);
 	pthread_mutex_init(&program->mutex_meals_to_take, NULL);
 	pthread_mutex_init(&program->mutex_start_time, NULL);
-	// pthread_mutex_init(&program->time_mutex, NULL);
 }
 
 // each fork gets a mutex 
-
 void	init_forks(t_program *program)
 {
 	int i;

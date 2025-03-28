@@ -19,7 +19,6 @@ uint_fast64_t 	ft_get_time_millis()
 {
 	struct timeval	time;
 	uint_fast64_t	time_milisec;
-	// suseconds_t  tv_usec;  /* Microseconds */
 	if(gettimeofday(&time,NULL)!= 0) 
 		perror("faild to find time of the day");
 	time_milisec = (time.tv_sec * 1000) + (time.tv_usec / 1000);
@@ -30,4 +29,3 @@ uint_fast64_t	get_current_time(t_program *program)
 {
 	return(ft_get_time_millis() - program->start_time);
 }
-
