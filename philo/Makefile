@@ -90,14 +90,14 @@ debug: -Wall -Wextra -Werror -g -I inc/ -fsanitize=address
 
 
 valgrind:
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose ./philo
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose ./philo 5 200 100 150 5
 
 
 helgrind:
 	valgrind --tool=helgrind ./philo 2 200 200 7 
 
 assembly:
-	$(CC) -S srcs/philosophers.c
+	$(CC) -S src/main.c
 
 clean:
 	@echo "$(Yellow)-----Removing Object Files--------$(Color_Off)"
@@ -111,7 +111,7 @@ fclean: clean
 	@printf "$(On_Green)Cleaned up $(NAME)$(Color_Off)\n"
 
 
-re: $(MAKE) fclean
+re: fclean
 	$(MAKE) all
 
 #norm:

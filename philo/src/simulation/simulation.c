@@ -12,24 +12,6 @@
 
 #include "../../inc/philo.h"
 
-// simulations when a philo eats, thinks or sleeps updates last_time_eaten every time
-void	simulation(t_program *program, t_philo *philo)
-{
-	while(1)
-	{
-		if(check_philo_alive(philo,program ) == false)
-			return;
-		// printf(" philo %d in simulation part 1\n", philo->philo_id);
-		// print_fork_state(program, "BEFORE");
-		philo_eats(philo, program);
-		philo_sleeps(philo, program);
-		philo_thinks(philo, program);
-		// print_fork_state(program, "AFTER");
-		if (check_is_philo_full(program, philo) == false)
-			return ;
-		// debug_log(program, philo, "one_round");
-	}
-}
 
 void	philo_sleeps(t_philo *philo, t_program *program)
 {
@@ -69,3 +51,18 @@ bool check_philo_alive(t_philo *philo, t_program *program)
 	return(philo_alive);
 }
 
+bool	check_is_philo_full(t_program *program, t_philo *philo)
+{
+	bool philo_is_not_full;
+	
+	philo_is_not_full = true;
+	pthread_mutex_lock(&philo->mutex_taken_meals);
+	pthread_mutex_lock(&program->mutex_meals_to_take);
+	if (program->bool_meal_limit == false)
+		philo_is_not_full = true;
+	else 
+		philo_is_not_full = (philo->taken_meals < program->nbr_of_times_philo_must_eat);
+	pthread_mutex_unlock(&program->mutex_meals_to_take);
+	pthread_mutex_unlock(&philo->mutex_taken_meals);
+	return (philo_is_not_full);
+}

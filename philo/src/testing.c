@@ -13,7 +13,6 @@
 
 #include "../inc/philo.h"
 
-
 // void    print_program_struct(t_program *program)
 // {
 // 	printf(" philo id %d \n", program->philo->philo_id);
@@ -33,24 +32,23 @@
 //         i++;
 // 	}
 // }
+//
+// void debug_log(t_program *program, t_philo *philo, char *action)
+// {
+//     pthread_mutex_lock(&program->mutex_print);
+//     printf("[DEBUG] %lu ms | Philo %d | %s | Eaten: %lu | Last eaten: %lu\n", 
+//         get_current_time(program), philo->philo_id, action, 
+//         philo->taken_meals, philo->time_last_eaten);
+//     pthread_mutex_unlock(&program->mutex_print);
+// }
 
-
-void debug_log(t_program *program, t_philo *philo, char *action)
-{
-    pthread_mutex_lock(&program->mutex_print);
-    printf("[DEBUG] %lu ms | Philo %d | %s | Eaten: %lu | Last eaten: %lu\n", 
-        get_current_time(program), philo->philo_id, action, 
-        philo->taken_meals, philo->time_last_eaten);
-    pthread_mutex_unlock(&program->mutex_print);
-}
-
-void print_fork_state(t_program *program, char *time)
-{
-    int i;
-    printf("\n--- FORK STATE ---\n");
-    for (i = 0; i < program->philos_and_forks; i++)
-    {
-        printf("Fork %d: %s %s \n", i+1, program->forks[i].fork_bool ? "TAKEN" : "FREE", time);
-    }
-    printf("-----------------\n");
-}
+// void print_fork_state(t_program *program, char *time)
+// {
+//     int i;
+//     printf("\n--- FORK STATE ---\n");
+//     for (i = 0; i < program->philos_and_forks; i++)
+//     {
+//         printf("Fork %d: %s %s \n", i+1, program->forks[i].fork_bool ? "TAKEN" : "FREE", time);
+//     }
+//     printf("-----------------\n");
+// }

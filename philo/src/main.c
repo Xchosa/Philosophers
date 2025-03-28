@@ -17,18 +17,13 @@ int main(int argc, char **argv)
 {
 	t_program   program;
     
-
     check_arg(argc, argv);
     init_arguments_in_programm(&program, argv, argc);
 	initialise_mutex_in_program(&program);
     init_forks(&program);
     init_philos(&program);
-	// print_program_struct(&program);
-	
-    if (process(&program) == 1)
-         printf("smth went wrong");
-
-    // print_program_struct(&program);
+    if (create_threads(&program) == 1)
+         printf("Failed to create thread");
     wait_for_all_threads(&program);
 	dextroy_thread_mutex(&program);
 }

@@ -13,6 +13,21 @@
 #include "../../inc/philo.h"
 
 
+void	simulation(t_program *program, t_philo *philo)
+{
+	while(1)
+	{
+		philo_eats(philo, program);
+		if(check_philo_alive(philo,program ) == false)
+			return ;
+		philo_sleeps(philo, program);
+		philo_thinks(philo, program);
+		if (check_is_philo_full(program, philo) == false)
+			return ;
+		// debug_log(program, philo, "one_round");
+	}
+}
+
 void	*routine(void *philo_thread)
 {
 	t_philo *philo;
@@ -30,7 +45,7 @@ void	*routine(void *philo_thread)
 	return (NULL);
 }
 
-int    process(t_program *program)
+int    create_threads(t_program *program)
 {
     int i;
     
@@ -38,7 +53,7 @@ int    process(t_program *program)
     while(i < program->philos_and_forks)
     {
         if(pthread_create(&program->philo[i].philo_thread, NULL, routine, (void*)&program->philo[i]) != 0)
-			return(perror("Failed to create thread"), 1);
+			return(1);
 		i++;
     }
 	return 0;

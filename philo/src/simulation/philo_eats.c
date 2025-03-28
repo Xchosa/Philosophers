@@ -12,26 +12,6 @@
 
 #include "../../inc/philo.h"
 
-// watch https://www.youtube.com/watch?v=raLCgPK-Igc
-// reduce mutex
-
-bool	check_is_philo_full(t_program *program, t_philo *philo)
-{
-	bool philo_is_not_full;
-	
-	philo_is_not_full = true;
-	pthread_mutex_lock(&philo->mutex_taken_meals);
-	pthread_mutex_lock(&program->mutex_meals_to_take);
-	if (program->bool_meal_limit == false)
-		philo_is_not_full = true;
-	if (philo->taken_meals < program->nbr_of_times_philo_must_eat)
-		philo_is_not_full = true;
-	if (philo->taken_meals >= program->nbr_of_times_philo_must_eat)
-		philo_is_not_full = false;
-	pthread_mutex_unlock(&program->mutex_meals_to_take);
-	pthread_mutex_unlock(&philo->mutex_taken_meals);
-	return (philo_is_not_full);
-}
 
 void	fork_back_on_table(t_philo *philo)
 {
@@ -48,7 +28,6 @@ void	update_eaten_meals_Nbr_and_time(t_philo *philo, t_program *program)
 	pthread_mutex_unlock(&program->mutex_meals_to_take);
 	pthread_mutex_unlock(&philo->mutex_taken_meals);
 }
-
 
 
 void choose_fork_to_lock(t_philo *philo)
