@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:25:07 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/31 12:02:49 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/31 14:31:30 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_forks(t_program *program)
 	int	i;
 
 	i = 0;
-	while(i < program->philos_and_forks)
+	while (i < program->philos_and_forks)
 	{
 		program->forks[i].fork_bool = false;
 		pthread_mutex_init(&program->forks[i].fork_mutex, NULL);

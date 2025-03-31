@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:36:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/31 10:00:10 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:41:56 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@ void	philo_sleeps(t_philo *philo, t_program *program)
 
 void	philo_thinks(t_philo *philo, t_program *program)
 {
+	if(check_philo_alive(philo, program) == false)
+			return;
 	print_save(program, philo, THINK);
-	usleep(program->time_to_die /4 *1000 );
+	usleep(2 * 1000);
 }
-/*
-printf(" think time: %lu \n", program->time_to_die - 
-(get_current_time(program) - philo->time_last_eaten))
-*/
 
 bool	check_is_philo_full(t_program *program, t_philo *philo)
 {

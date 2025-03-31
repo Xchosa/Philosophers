@@ -6,7 +6,7 @@
 #    By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 13:32:16 by poverbec          #+#    #+#              #
-#    Updated: 2025/03/25 15:59:54 by poverbec         ###   ########.fr        #
+#    Updated: 2025/03/31 14:58:08 by poverbec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,7 +96,7 @@ valgrind:
 
 
 helgrind:
-	valgrind --tool=helgrind ./philo 2 200 200 7 
+	valgrind --tool=helgrind ./philo 2 200 200 70 
 
 assembly:
 	$(CC) -S src/main.c

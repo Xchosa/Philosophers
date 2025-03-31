@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 10:25:14 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/31 09:52:42 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:38:41 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,12 @@ void philo_eats(t_philo *philo, t_program *program)
     while(1)
     {
         if(check_philo_alive(philo, program) == false)
-            return;
+			return;
 		choose_fork_to_lock(philo);
         if(philo->right_fork->fork_bool == false && philo->left_fork->fork_bool == false)
         {
+			if(check_philo_alive(philo, program) == false)
+				return;
             philo->right_fork->fork_bool = true;
             print_save(program, philo, FORK);
     	    philo->left_fork->fork_bool = true;
@@ -79,7 +81,7 @@ void philo_eats(t_philo *philo, t_program *program)
         else
         {
 			choose_fork_to_unlock(philo);
+			usleep(2*1000);
 		}
-        usleep(2*1000);
     }
 }
