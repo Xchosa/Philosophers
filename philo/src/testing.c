@@ -6,10 +6,9 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:41:48 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/26 12:35:53 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/31 09:49:22 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../inc/philo.h"
 

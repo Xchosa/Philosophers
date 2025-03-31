@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 10:25:14 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/26 16:43:08 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/31 09:52:42 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	update_eaten_meals_Nbr_and_time(t_philo *philo, t_program *program)
 	// pthread_mutex_unlock(&program->time_mutex);
 	pthread_mutex_unlock(&philo->mutex_taken_meals);
 }
-
 
 void choose_fork_to_lock(t_philo *philo)
 {
