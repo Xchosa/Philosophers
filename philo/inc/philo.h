@@ -6,14 +6,12 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/01 11:45:42 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:33:03 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #ifndef PHILO_H
 # define PHILO_H
-
 
 # include <inttypes.h>
 # include <pthread.h>
@@ -24,8 +22,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
-
-
 # include <limits.h>
 # include <stdarg.h>
 # include <fcntl.h>
@@ -34,26 +30,17 @@
 #  define MAX_THREADS 200
 # endif
 
-# define	EAT			"is eating"
-# define	FORK		"is taking a fork"
-# define	SLEEP		"is sleeping"
-# define	THINK 		"is thinking"
-# define	DEAD		"philo died"
-
+# define EAT			"is eating"
+# define FORK		"is taking a fork"
+# define SLEEP		"is sleeping"
+# define THINK 		"is thinking"
+# define DEAD		"philo died"
 
 typedef struct s_forks
 {
 	pthread_mutex_t		fork_mutex;
-	bool				fork_bool; // false free // true taken 
+	bool				fork_bool;
 }	t_forks;
-
-// https://www.youtube.com/watch?v=raLCgPK-Igc
-// mutex als bool // switch wenn andere thread diesen mutex 
-// benutzt - 
-// darf er die danach variablien 
-// kein anderer thread darf diesen mutex benutzen - 
-// warten bis switch frei wird. 
-// deswegen namen geben. 
 
 typedef struct s_philo
 {
@@ -103,7 +90,7 @@ void	init_forks(t_program *program);
 // created threads for each philo 
 // no need to malloc
 void	init_philos(t_program *program);
-uint_fast64_t 	ft_get_time_millis(void);
+uint_fast64_t	ft_get_time_millis(void);
 uint_fast64_t	get_current_time(t_program *program);
 
 void	*routine(void *philo_thread);
@@ -122,12 +109,8 @@ void	philo_sleeps(t_philo *philo, t_program *program);
 void	philo_thinks(t_philo *philo, t_program *program);
 
 // clean_up
-void    wait_for_all_threads(t_program *program);
-void    dextroy_thread_mutex(t_program *program);
-
-// 
-void	free_everything(t_program *program);
-
+void	wait_for_all_threads(t_program *program);
+void	destroy_thread_mutex(t_program *program);
 // debug
 void	print_fork_state(t_program *program, char *time);
 void	debug_log(t_program *program, t_philo *philo, char *action);

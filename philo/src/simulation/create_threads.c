@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:23:57 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/01 12:26:20 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:37:47 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	create_threads(t_program *program)
 	i = 0;
 	while (i < program->philos_and_forks)
 	{
-		if(pthread_create(&program->philo[i].philo_thread, NULL,
+		if (pthread_create(&program->philo[i].philo_thread, NULL,
 				routine, (void*)&program->philo[i]) != 0)
 			return (1);
 		i++;

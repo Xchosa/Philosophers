@@ -6,13 +6,13 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:48 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/31 11:29:10 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:45:57 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	dextroy_thread_mutex(t_program *program)
+void	destroy_thread_mutex(t_program *program)
 {
 	int	i;
 
@@ -25,8 +25,8 @@ void	dextroy_thread_mutex(t_program *program)
 	{
 		pthread_mutex_destroy(&program->philo[i].mutex_taken_meals);
 		pthread_mutex_destroy(&program->philo[i].mutex_time_last_eaten);
-        pthread_mutex_destroy(&program->forks[i].fork_mutex);
-        i++;
+		pthread_mutex_destroy(&program->forks[i].fork_mutex);
+		i++;
 	}
 }
 

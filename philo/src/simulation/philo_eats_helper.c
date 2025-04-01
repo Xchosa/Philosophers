@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo_eats.c                                       :+:      :+:    :+:   */
+/*   philo_eats_helper.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 10:25:14 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/01 11:31:34 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/01 17:41:56 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,19 @@ void	fork_back_on_table(t_philo *philo)
 void	update_eaten_meals_Nbr_and_time(t_philo *philo, t_program *program)
 {
 	pthread_mutex_lock(&philo->mutex_taken_meals);
-	// pthread_mutex_lock(&program->time_mutex);
 	philo->time_last_eaten = get_current_time(program);
 	philo->taken_meals++;
-	// pthread_mutex_unlock(&program->time_mutex);
 	pthread_mutex_unlock(&philo->mutex_taken_meals);
 }
 
-void choose_fork_to_lock(t_philo *philo)
+void	choose_fork_to_lock(t_philo *philo)
 {
 	if (&philo->right_fork->fork_mutex < &philo->left_fork->fork_mutex)
 	{
 		pthread_mutex_lock(&philo->right_fork->fork_mutex);
 		pthread_mutex_lock(&philo->left_fork->fork_mutex);
 	}
-    else
+	else
 	{
 		pthread_mutex_lock(&philo->left_fork->fork_mutex);
     	pthread_mutex_lock(&philo->right_fork->fork_mutex);
@@ -65,4 +63,3 @@ void	using_forks_to_eat(t_philo *philo, t_program *program)
 	print_save(program, philo, EAT);
 	usleep(program->time_to_eat * 1000);
 }
-

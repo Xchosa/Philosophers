@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:49:08 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/31 09:49:12 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/01 16:46:07 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ long	ft_atol(const char *str)
 {
 	long	isneg;
 	int		i;
-	long		number;
+	long	number;
 
 	number = 0;
 	i = 0;
