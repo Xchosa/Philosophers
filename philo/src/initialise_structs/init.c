@@ -6,11 +6,11 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:25:07 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/31 14:31:30 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/01 11:39:35 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/philo.h"
+#include "../../inc/philo.h"
 
 void	init_arguments_in_programm(t_program *program, char **argv, int argc)
 {
@@ -71,11 +71,14 @@ void	init_philos(t_program *program)
 			[(i - 1 + program->philos_and_forks) % program->philos_and_forks];
 		pthread_mutex_init(&program->philo[i].mutex_taken_meals, NULL);
 		pthread_mutex_init(&program->philo[i].mutex_time_last_eaten, NULL);
-
-		printf("Philo_id %d: right fork %p | left fork %p  \n ", 
-            program->philo[i].philo_id, 
-            program->philo[i].right_fork,
-            program->philo[i].left_fork),
 		i++;
 	}
 }
+
+/*
+testing that every philo has the correct forks assigned to him
+printf("Philo_id %d: right fork %p | left fork %p  \n ", 
+	program->philo[i].philo_id, 
+	program->philo[i].right_fork,
+	program->philo[i].left_fork),
+*/

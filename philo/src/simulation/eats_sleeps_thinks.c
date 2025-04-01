@@ -6,12 +6,39 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:36:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/31 16:41:56 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/01 11:31:56 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/philo.h"
 
+void philo_eats(t_philo *philo, t_program *program)
+{
+    while(1)
+    {
+        if(check_philo_alive(philo, program) == false)
+			return;
+		choose_fork_to_lock(philo);
+        if(philo->right_fork->fork_bool == false && philo->left_fork->fork_bool == false)
+        {
+			if(check_philo_alive(philo, program) == false)
+			{
+				choose_fork_to_unlock(philo);
+				return;
+			}
+			using_forks_to_eat(philo, program);
+            fork_back_on_table(philo);
+            update_eaten_meals_Nbr_and_time(philo, program);
+			choose_fork_to_unlock(philo);
+            return;
+        }
+        else
+        {
+			choose_fork_to_unlock(philo);
+			usleep(2*1000);
+		}
+    }
+}
 
 void	philo_sleeps(t_philo *philo, t_program *program)
 {

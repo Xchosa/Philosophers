@@ -6,11 +6,12 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:25:13 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/25 16:25:02 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/03/31 16:46:41 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
+//program haengt sich noch auf bei vielen philos 
 
 int main(int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 10:25:14 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/31 16:38:41 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/01 11:31:34 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,32 +56,13 @@ void choose_fork_to_unlock(t_philo *philo)
 	}
 }
 
-void philo_eats(t_philo *philo, t_program *program)
+void	using_forks_to_eat(t_philo *philo, t_program *program)
 {
-    while(1)
-    {
-        if(check_philo_alive(philo, program) == false)
-			return;
-		choose_fork_to_lock(philo);
-        if(philo->right_fork->fork_bool == false && philo->left_fork->fork_bool == false)
-        {
-			if(check_philo_alive(philo, program) == false)
-				return;
-            philo->right_fork->fork_bool = true;
-            print_save(program, philo, FORK);
-    	    philo->left_fork->fork_bool = true;
-            print_save(program, philo, FORK);
-            print_save(program, philo, EAT);
-            usleep(program->time_to_eat * 1000);
-            fork_back_on_table(philo);
-            update_eaten_meals_Nbr_and_time(philo, program);
-			choose_fork_to_unlock(philo);
-            return;
-        }
-        else
-        {
-			choose_fork_to_unlock(philo);
-			usleep(2*1000);
-		}
-    }
+	philo->right_fork->fork_bool = true;
+	print_save(program, philo, FORK);
+	philo->left_fork->fork_bool = true;
+	print_save(program, philo, FORK);
+	print_save(program, philo, EAT);
+	usleep(program->time_to_eat * 1000);
 }
+

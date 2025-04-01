@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   create_threads.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:23:57 by poverbec          #+#    #+#             */
-/*   Updated: 2025/03/31 15:04:11 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/01 11:49:06 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/philo.h"
-
-void	simulation(t_program *program, t_philo *philo)
-{
-	while (1)
-	{
-		if (check_philo_alive(philo, program) == false)
-			return ;
-		philo_eats(philo, program);
-		philo_sleeps(philo, program);
-		philo_thinks(philo, program);
-		if (check_is_philo_full(program, philo) == false)
-			return ;
-	}
-}
 
 void	*routine(void *philo_thread)
 {
@@ -38,7 +24,16 @@ void	*routine(void *philo_thread)
 	{
 		usleep((program->time_to_eat / 10));
 	}
-	simulation(program, philo);
+	while (1)
+	{
+		if (check_philo_alive(philo, program) == false)
+			return (NULL);
+		philo_eats(philo, program);
+		if ((check_is_philo_full(program, philo)) == false)
+			return (NULL);
+		philo_sleeps(philo, program);
+		philo_thinks(philo, program);
+	}
 	return (NULL);
 }
 

@@ -6,7 +6,7 @@
 #    By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 13:32:16 by poverbec          #+#    #+#              #
-#    Updated: 2025/03/31 14:58:08 by poverbec         ###   ########.fr        #
+#    Updated: 2025/04/01 11:54:27 by poverbec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,11 @@ CFLAGS		= -Wall -Wextra -Werror -g -I inc/
 
 SOURCE_DIR = ./src
 SIMULATION_DIR = ./src/simulation
+INITALISE_DIR = ./src/initialise_structs
 INC_DIR = inc
 OBJ_DIR = obj
 
-VPATH = $(SOURCE_DIR):$(SIMULATION_DIR):$(INC_DIR)
+VPATH = $(SOURCE_DIR):$(SIMULATION_DIR):$(INITALISE_DIR):$(INC_DIR)
 
 
 # ---------- Subjects ---------- #
@@ -35,10 +36,10 @@ MY_SOURCES = \
 		helper.c \
 		init.c \
 		destroy_mutex.c \
-		routine.c \
-		simulation.c \
-		check_philo_live.c \
-		philo_eats.c \
+		create_threads.c \
+		eats_sleeps_thinks.c \
+		check_philo_alive.c \
+		philo_eats_helper.c \
 		print.c \
 		get_times.c \
 		wait_for_threads.c \
@@ -92,7 +93,7 @@ debug: -Wall -Wextra -Werror -g -I inc/ -fsanitize=address
 
 
 valgrind:
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose ./philo 5 200 100 150 5
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose ./philo 3 400 100 100 3
 
 
 helgrind:
@@ -116,9 +117,9 @@ fclean: clean
 re: fclean
 	$(MAKE) all
 
-#norm:
-#	@cd src && norminette | grep "Error:" | wc -l
-#norminette: norm
+norm:
+	@cd src && norminette | grep "Error:" | wc -l
+norminette: norm
 
 # f: fclean
 # f: CFLAGS += -g -fsanitize=address
