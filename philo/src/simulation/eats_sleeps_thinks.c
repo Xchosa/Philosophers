@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:36:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/03 09:26:02 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/03 11:18:14 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	philo_eats(t_philo *philo, t_program *program)
 			}
 			using_forks_to_eat(philo, program);
 			fork_back_on_table(philo);
-			update_eaten_meals_Nbr_and_time(philo, program);
+			update_eaten_meals_nbr_and_time(philo, program);
 			choose_fork_to_unlock(philo);
 			return ;
 		}
