@@ -6,11 +6,13 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:23:57 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/01 16:37:47 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/03 14:54:00 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/philo.h"
+
+
 
 void	*routine(void *philo_thread)
 {
