@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:25:07 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/01 11:39:35 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/03 11:07:55 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	init_philos(t_program *program)
 		program->philo[i].time_last_eaten = get_current_time(program);
 		program->philo[i].program = program;
 		program->philo[i].right_fork = &program->forks[i];
-		program->philo[i].left_fork = &program->forks
+		program->philo[i].left_fork = &program->forks \
 			[(i - 1 + program->philos_and_forks) % program->philos_and_forks];
 		pthread_mutex_init(&program->philo[i].mutex_taken_meals, NULL);
 		pthread_mutex_init(&program->philo[i].mutex_time_last_eaten, NULL);

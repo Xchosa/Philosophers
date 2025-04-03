@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/03 10:40:06 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/03 11:05:38 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ typedef struct s_forks
 
 typedef struct s_philo
 {
-    pthread_t			philo_thread;
-    int					philo_id;
+	pthread_t			philo_thread;
+	int					philo_id;
 	bool				philo_alive;
-    uint_fast64_t		time_last_eaten;
 	t_forks				*left_fork;
 	t_forks				*right_fork;
+	uint_fast64_t		time_last_eaten;
 	uint_fast64_t		taken_meals;
 	pthread_mutex_t		mutex_taken_meals;
 	pthread_mutex_t		mutex_time_last_eaten;

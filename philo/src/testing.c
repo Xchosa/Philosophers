@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:41:48 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/01 16:37:31 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/03 11:11:45 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@
 //     printf("\n--- FORK STATE ---\n");
 //     for (i = 0; i < program->philos_and_forks; i++)
 //     {
-//         printf("Fork %d: %s %s \n", i+1, program->forks[i].fork_bool ? "TAKEN" : "FREE", time);
+//         printf("Fork %d: %s %s \n", i+1, program->forks[i]\
+//			.fork_bool ? "TAKEN" : "FREE", time);
 //     }
 //     printf("-----------------\n");
 // }

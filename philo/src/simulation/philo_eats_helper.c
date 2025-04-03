@@ -6,12 +6,11 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 10:25:14 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/03 10:01:44 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/03 11:08:09 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/philo.h"
-
 
 void	fork_back_on_table(t_philo *philo)
 {

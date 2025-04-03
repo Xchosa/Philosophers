@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:25:13 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/03 09:55:45 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/03 11:06:58 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	init_forks(&program);
 	init_philos(&program);
 	if (create_threads(&program) == 1)
-		printf("Failed to create thread");
+		printf("Failed to create thread\n");
 	wait_for_all_threads(&program);
 	destroy_thread_mutex(&program);
 }
