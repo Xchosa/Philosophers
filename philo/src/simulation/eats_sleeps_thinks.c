@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:36:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/01 17:40:46 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/03 09:26:02 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ bool	check_is_philo_full(t_program *program, t_philo *philo)
 	if (program->bool_meal_limit == false)
 		philo_not_full = true;
 	else
-		philo_not_full = (philo->taken_meals < program->nbr_of_times_philo_must_eat);
+		philo_not_full = (philo->taken_meals \
+			< program->nbr_of_times_philo_must_eat);
 	pthread_mutex_unlock(&program->mutex_meals_to_take);
 	pthread_mutex_unlock(&philo->mutex_taken_meals);
 	return (philo_not_full);

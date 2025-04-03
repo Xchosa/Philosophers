@@ -6,11 +6,12 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:25:13 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/01 16:35:39 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/03 09:55:45 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
+//https://nafuka11.github.io/philosophers-visualizer/
 
 int	main(int argc, char **argv)
 {

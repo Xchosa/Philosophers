@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 10:25:14 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/01 17:41:56 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/03 10:01:44 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	fork_back_on_table(t_philo *philo)
 	philo->right_fork->fork_bool = false;
 }
 
-void	update_eaten_meals_Nbr_and_time(t_philo *philo, t_program *program)
+void	update_eaten_meals_nbr_and_time(t_philo *philo, t_program *program)
 {
 	pthread_mutex_lock(&philo->mutex_taken_meals);
 	philo->time_last_eaten = get_current_time(program);
@@ -37,17 +37,18 @@ void	choose_fork_to_lock(t_philo *philo)
 	else
 	{
 		pthread_mutex_lock(&philo->left_fork->fork_mutex);
-    	pthread_mutex_lock(&philo->right_fork->fork_mutex);
+		pthread_mutex_lock(&philo->right_fork->fork_mutex);
 	}
 }
-void choose_fork_to_unlock(t_philo *philo)
+
+void	choose_fork_to_unlock(t_philo *philo)
 {
 	if (&philo->right_fork->fork_mutex < &philo->left_fork->fork_mutex)
 	{
 		pthread_mutex_unlock(&philo->left_fork->fork_mutex);
-    	pthread_mutex_unlock(&philo->right_fork->fork_mutex);
+		pthread_mutex_unlock(&philo->right_fork->fork_mutex);
 	}
-    else
+	else
 	{
 		pthread_mutex_unlock(&philo->right_fork->fork_mutex);
 		pthread_mutex_unlock(&philo->left_fork->fork_mutex);

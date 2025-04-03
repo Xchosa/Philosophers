@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 09:48:53 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/01 16:51:47 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/03 09:56:00 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ bool	check_philo_alive(t_philo *philo, t_program *program)
 
 // printf("philo id %d time last eaten %ld\n",
 // philo->philo_id, philo->time_last_eaten);
+// no cases 
 void	initalize_philo_lifetime(t_philo *philo, t_program *program)
 {
 	pthread_mutex_lock(&philo->mutex_taken_meals);

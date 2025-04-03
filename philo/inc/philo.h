@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/01 16:33:03 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/03 10:01:57 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 #  define MAX_THREADS 200
 # endif
 
-# define EAT			"is eating"
-# define FORK		"is taking a fork"
+# define EAT		"is eating"
+# define FORK		"has taken a fork"
 # define SLEEP		"is sleeping"
 # define THINK 		"is thinking"
 # define DEAD		"philo died"
@@ -89,7 +89,7 @@ void	initialise_mutex_in_program(t_program *program);
 void	init_forks(t_program *program);
 // created threads for each philo 
 // no need to malloc
-void	init_philos(t_program *program);
+void			init_philos(t_program *program);
 uint_fast64_t	ft_get_time_millis(void);
 uint_fast64_t	get_current_time(t_program *program);
 
@@ -100,7 +100,7 @@ void	philo_eats(t_philo *philo, t_program *program);
 void	choose_fork_to_unlock(t_philo *philo);
 void	choose_fork_to_lock(t_philo *philo);
 void	fork_back_on_table(t_philo *philo);
-void	update_eaten_meals_Nbr_and_time(t_philo *philo, t_program *program);
+void	update_eaten_meals_nbr_and_time(t_philo *philo, t_program *program);
 void	using_forks_to_eat(t_philo *philo, t_program *program);
 
 bool	check_philo_alive(t_philo *philo, t_program *program);
