@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/03 10:01:57 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/03 10:40:06 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,44 +75,46 @@ typedef struct s_program
 
 }	t_program;
 
-// check input
-void	check_arg(int argc, char **argv);
-void	error_input(char *error_msg);
-void	ft_putendl_fd(char *s, int fd);
-int		ft_atoi(const char *str);
-long	ft_atol(const char *str);
-void	print_program_struct(t_program *program);
-void	print_save(t_program *program, t_philo *philo, char *message);
-void	init_arguments_in_programm(t_program *program, char **argv, int argc);
-void	initialise_mutex_in_program(t_program *program);
-// void	init_programm(t_program *program, char **argv, int argc);
-void	init_forks(t_program *program);
-// created threads for each philo 
-// no need to malloc
-void			init_philos(t_program *program);
+// Time functions
 uint_fast64_t	ft_get_time_millis(void);
 uint_fast64_t	get_current_time(t_program *program);
 
-void	*routine(void *philo_thread);
-int		create_threads(t_program *program);
-void	initalize_philo_lifetime(t_philo *philo, t_program *program);
-void	philo_eats(t_philo *philo, t_program *program);
-void	choose_fork_to_unlock(t_philo *philo);
-void	choose_fork_to_lock(t_philo *philo);
-void	fork_back_on_table(t_philo *philo);
-void	update_eaten_meals_nbr_and_time(t_philo *philo, t_program *program);
-void	using_forks_to_eat(t_philo *philo, t_program *program);
+// check input
+void			check_arg(int argc, char **argv);
+void			error_input(char *error_msg);
+void			ft_putendl_fd(char *s, int fd);
+int				ft_atoi(const char *str);
+long			ft_atol(const char *str);
 
-bool	check_philo_alive(t_philo *philo, t_program *program);
-bool	check_is_philo_full(t_program *program, t_philo *philo);
-void	philo_sleeps(t_philo *philo, t_program *program);
-void	philo_thinks(t_philo *philo, t_program *program);
+void			print_save(t_program *program, t_philo *philo, char *message);
+void			init_arguments_in_programm(t_program *program, \
+				char **argv, int argc);
+void			initialise_mutex_in_program(t_program *program);
+void			init_forks(t_program *program);
+void			init_philos(t_program *program);
+
+void			*routine(void *philo_thread);
+int				create_threads(t_program *program);
+void			initalize_philo_lifetime(t_philo *philo, t_program *program);
+void			philo_eats(t_philo *philo, t_program *program);
+void			choose_fork_to_unlock(t_philo *philo);
+void			choose_fork_to_lock(t_philo *philo);
+void			fork_back_on_table(t_philo *philo);
+void			update_eaten_meals_nbr_and_time(t_philo *philo, \
+				t_program *program);
+void			using_forks_to_eat(t_philo *philo, t_program *program);
+
+bool			check_philo_alive(t_philo *philo, t_program *program);
+bool			check_is_philo_full(t_program *program, t_philo *philo);
+void			philo_sleeps(t_philo *philo, t_program *program);
+void			philo_thinks(t_philo *philo, t_program *program);
 
 // clean_up
-void	wait_for_all_threads(t_program *program);
-void	destroy_thread_mutex(t_program *program);
+void			wait_for_all_threads(t_program *program);
+void			destroy_thread_mutex(t_program *program);
 // debug
-void	print_fork_state(t_program *program, char *time);
-void	debug_log(t_program *program, t_philo *philo, char *action);
+// void			print_fork_state(t_program *program, char *time);
+// void			debug_log(t_program *program, t_philo *philo, char *action);
+// void	print_program_struct(t_program *program);
 
 #endif
