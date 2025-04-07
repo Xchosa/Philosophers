@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 10:41:48 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/07 12:51:40 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/07 13:04:57 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,3 @@
 //         philo->taken_meals, philo->time_last_eaten);
 //     pthread_mutex_unlock(&program->mutex_print);
 // }
-
