@@ -67,6 +67,8 @@ void	init_philos(t_program *program)
 		program->philo[i].time_last_eaten = get_current_time(program);
 		program->philo[i].program = program;
 		program->philo[i].right_fork = &program->forks[i];
+		if(program->philos_and_forks == 1)
+			break;
 		program->philo[i].left_fork = &program->forks \
 			[(i - 1 + program->philos_and_forks) % program->philos_and_forks];
 		pthread_mutex_init(&program->philo[i].mutex_taken_meals, NULL);

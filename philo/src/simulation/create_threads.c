@@ -30,6 +30,8 @@ void	*routine(void *philo_thread)
 	{
 		if (check_philo_alive(philo, program) == false)
 			return (NULL);
+		if(program->philos_and_forks == 1)
+			handle_one_philo()
 		philo_eats(philo, program);
 		if ((check_is_philo_full(program, philo)) == false)
 			return (NULL);

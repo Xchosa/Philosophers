@@ -17,10 +17,12 @@ int	main(int argc, char **argv)
 {
 	t_program	program;
 
-	check_arg(argc, argv);
+	if(check_arg(argc, argv)== false);
+		return;
 	// check if smth arv holds a 5.5 oder string = false  
 	// return; 
 	// if only one philo -> seperate function takes the time_to_die and dies after thisAND return 
+	
 	init_arguments_in_programm(&program, argv, argc);
 	initialise_mutex_in_program(&program);
 	init_forks(&program);
