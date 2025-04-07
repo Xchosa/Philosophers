@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 16:41:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/03 09:45:31 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/07 12:51:01 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	print_save(t_program *program, t_philo *philo, char *message)
 {
 	pthread_mutex_lock(&program->mutex_print);
 	if (program->all_philos_alive == true)
-		printf("%llu %d %s\n", get_current_time(program),
+		printf("%lu %d %s\n", get_current_time(program),
 			philo->philo_id, message);
 	pthread_mutex_unlock(&program->mutex_print);
 }

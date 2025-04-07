@@ -6,19 +6,11 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:23:57 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/07 10:54:11 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/07 11:23:36 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/philo.h"
-
-
-static void	handle_one_philo(t_philo *philo, t_program *program)
-{
-	usleep(program->time_to_die * 1000);
-	print_save(program, philo, DEAD);
-}
-
 
 void	*routine(void *philo_thread)
 {

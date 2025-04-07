@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:36:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/03 11:18:14 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/07 11:24:21 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,10 @@ bool	check_is_philo_full(t_program *program, t_philo *philo)
 	pthread_mutex_unlock(&program->mutex_meals_to_take);
 	pthread_mutex_unlock(&philo->mutex_taken_meals);
 	return (philo_not_full);
+}
+
+void	handle_one_philo(t_philo *philo, t_program *program)
+{
+	usleep(program->time_to_die * 1000);
+	print_save(program, philo, DEAD);
 }

@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:35 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/07 10:45:31 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/07 11:23:29 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ uint_fast64_t	get_current_time(t_program *program);
 
 // check input
 bool			check_arg(int argc, char **argv);
+bool			check_for_clean_nbr(int argc, char **argv);
 int				error_input(char *error_msg);
 void			ft_putendl_fd(char *s, int fd);
 int				ft_atoi(const char *str);
@@ -103,10 +104,11 @@ void			fork_back_on_table(t_philo *philo);
 void			update_eaten_meals_nbr_and_time(t_philo *philo, \
 				t_program *program);
 void			using_forks_to_eat(t_philo *philo, t_program *program);
+void			handle_one_philo(t_philo *philo, t_program *program);
 
 // monitor
-void			monitor(t_philo *philo, t_program *program);
-bool			all_philos_live(t_philo *philo, t_program *program);
+// void			monitor(t_philo *philo, t_program *program);
+// bool			all_philos_live(t_philo *philo, t_program *program);
 
 bool			check_philo_alive(t_philo *philo, t_program *program);
 bool			check_is_philo_full(t_program *program, t_philo *philo);

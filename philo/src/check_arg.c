@@ -6,34 +6,25 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:43 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/07 09:48:06 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/07 11:23:58 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-
-static bool check_for_clean_nbr(int argc, char **argv)
+bool	check_for_clean_nbr(int argc, char **argv)
 {
-	if (ft_atoi(argv[1]) == -1)// atoi return -1 if it gets smth differnt
+	if (ft_atoi(argv[1]) == -1)
 		return (false);
 	if (ft_atoi(argv[2]) == -1)
 		return (false);
 	if (ft_atoi(argv[3]) == -1)
 		return (false);
 	if (argc == 5)
-		if (ft_atoi(argv[4])== -1)
+		if (ft_atoi(argv[4]) == -1)
 			return (false);
 	return (true);
 }
-
-// static void handle_one_philo(t_program *program)
-// {
-// 	program->start_time = ft_get_time_millis();
-// 	program->philos_and_forks = ft_atoi(argv[1]);
-// 	program->time_to_die = ft_atol(argv[2]);
-// 	print()
-// }
 
 int	error_input(char *error_msg)
 {

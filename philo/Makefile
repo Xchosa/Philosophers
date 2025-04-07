@@ -6,7 +6,7 @@
 #    By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/17 13:32:16 by poverbec          #+#    #+#              #
-#    Updated: 2025/04/03 09:36:27 by poverbec         ###   ########.fr        #
+#    Updated: 2025/04/07 13:02:58 by poverbec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,7 @@ debug: -Wall -Wextra -Werror -g -I inc/ -fsanitize=address
 
 
 valgrind:
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose ./philo 3 400 200 100 3
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose ./philo 2 400 200 100 2
 
 
 helgrind:
