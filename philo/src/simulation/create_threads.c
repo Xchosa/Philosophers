@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:23:57 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/07 11:23:36 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/08 10:02:35 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	*routine(void *philo_thread)
 	{
 		if (check_philo_alive(philo, program) == false)
 			return (NULL);
+		philo_thinks(philo, program);
 		philo_eats(philo, program);
 		if ((check_is_philo_full(program, philo)) == false)
 			return (NULL);
 		philo_sleeps(philo, program);
-		philo_thinks(philo, program);
 	}
 	return (NULL);
 }
