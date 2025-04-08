@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:24:43 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/07 13:43:50 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:36:49 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 bool	check_for_clean_nbr(int argc, char **argv)
 {
 	if (ft_atoi(argv[1]) == -1)
+		return (false);
+	if (ft_atoi(argv[1]) > 200)
 		return (false);
 	if (ft_atoi(argv[2]) == -1)
 		return (false);

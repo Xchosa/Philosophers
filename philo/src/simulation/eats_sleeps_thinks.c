@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 12:36:45 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/07 16:37:15 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/04/08 11:38:47 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	philo_eats(t_philo *philo, t_program *program)
 		else
 		{
 			choose_fork_to_unlock(philo);
-			usleep(2 * 1000);
+			usleep(1 * 1000);
 		}
 	}
 }
