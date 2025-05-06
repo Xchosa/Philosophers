@@ -6,7 +6,7 @@
 /*   By: poverbec <poverbec@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 11:23:57 by poverbec          #+#    #+#             */
-/*   Updated: 2025/04/08 10:02:35 by poverbec         ###   ########.fr       */
+/*   Updated: 2025/05/06 14:47:27 by poverbec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*routine(void *philo_thread)
 		return (NULL);
 	}
 	if ((philo->philo_id % 2) == 0)
-		usleep((program->time_to_eat / 10));
+		usleep((program->time_to_eat / 10 * 1000));
 	while (1)
 	{
 		if (check_philo_alive(philo, program) == false)
